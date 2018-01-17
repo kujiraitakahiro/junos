@@ -1,0 +1,1258 @@
+#
+# Defines the default for dynamic-profiles
+#
+dynamic-profiles {
+    <*> {
+        variables {
+            junos-interface-unit {
+                internal;
+                valid-path "interface_unit_number|unit-number unit interface interface-set";
+            }
+            junos-interface-ifd-name {
+                internal;
+                valid-path "interface_name|interface-name interface interface-set|underlying-interface";
+            }
+            junos-underlying-ifd-name {
+                internal;
+                valid-path "interface_name|interface-name interface interface-set|underlying-interface";
+            }
+            junos-underlying-interface-unit {
+                internal;
+                valid-path "interface_unit_number|unit-number unit interface interface-set";
+            }
+            junos-underlying-interface {
+                internal;
+                valid-path underlying-interface;
+            }
+            junos-subscriber-ip-address {
+                internal;
+                valid-path "source address inet|address demux-source inet|address source-address from term fast-update-filter inet|address destination-address from term fast-update-filter inet|destination route";
+            }
+            junos-subscriber-ipv6-address {
+                internal;
+                valid-path "source address inet6|address demux-source inet6|address source-address from term fast-update-filter inet6|address destination-address from term fast-update-filter inet6|destination route";
+            }
+            junos-interface-name {
+                internal;
+                valid-path "interface_name|nexthop qualified-next-hop|interface-name|interface";
+            }
+            junos-phy-ifd-name internal;
+            junos-bundle-interface-name {
+                internal;
+                valid-path bundle;
+            }
+            junos-subscriber-mac-address {
+                internal;
+                valid-path mac-address;
+            }
+            junos-igmp-enable {
+                internal;
+                valid-path enab_disab;
+                radius {
+                    vendor-id 4874 {
+                        radius-mapping {
+                            vsa-value 0;
+                            internal-value disable;
+                        }
+                        attribute 23;
+                    }
+                }
+            }
+            junos-igmp-access-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 71;
+                }
+            }
+            junos-igmp-access-source-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 72;
+                }
+            }
+            junos-igmp-version {
+                internal;
+                valid-path version;
+                radius {
+                    vendor-id 4874 attribute 78;
+                }
+            }
+            junos-igmp-immediate-leave {
+                internal;
+                valid-path immediate-leave;
+                radius {
+                    vendor-id 4874 {
+                        radius-mapping {
+                            vsa-value 1;
+                            internal-value immediate-leave;
+                        }
+                        attribute 97;
+                    }
+                }
+            }
+            junos-mld-access-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 74;
+                }
+            }
+            junos-mld-access-source-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 75;
+                }
+            }
+            junos-mld-version {
+                internal;
+                valid-path version;
+                radius {
+                    vendor-id 4874 attribute 77;
+                }
+            }
+            junos-mld-immediate-leave {
+                internal;
+                valid-path immediate-leave;
+                radius {
+                    vendor-id 4874 attribute 100;
+                }
+            }
+            junos-input-filter {
+                internal;
+                valid-path "filter-name input filter inet|filter-name input filter vpls|input filter unit";
+                radius {
+                    vendor-id 4874 attribute 10;
+                    vendor-id 0 attribute 11;
+                }
+            }
+            junos-output-filter {
+                internal;
+                valid-path "filter-name output filter inet|filter-name output filter vpls|output filter unit";
+                radius {
+                    vendor-id 4874 attribute 11;
+                }
+            }
+            junos-input-ipv6-filter {
+                internal;
+                valid-path "filter-name input filter inet6|input filter unit";
+                radius {
+                    vendor-id 4874 attribute 106;
+                }
+            }
+            junos-output-ipv6-filter {
+                internal;
+                valid-path "filter-name output filter inet6|output filter unit";
+                radius {
+                    vendor-id 4874 attribute 107;
+                }
+            }
+            junos-vlan-id {
+                internal;
+                valid-path "vlan-id unit|inner vlan-tags|outer vlan-tags";
+            }
+            junos-stacked-vlan-id {
+                internal;
+                valid-path "outer vlan-tags";
+            }
+            #
+            # Attribute 108, start.
+            #
+            # This attribute has an "old-style" with tags starting 
+            # at 1, and a "new-style" with tags starting at 101.  
+            # Old and new styles can not be mixed.  The new style 
+            # allows these attributes to be array variables similar 
+            # to class-of-service scheduler-maps.
+            #
+            # Also note that vendor-id 48741 is a ddl workaround.  
+            # Developer note: "No, ddl does not like the way it was 
+            # defined before so we had to just make it different.  
+            # But we convert it later to 4874 so you still see it 
+            # as 4874.  It is just a work around for ddl."
+            #
+            junos-cos-scheduler-map {
+                internal;
+                valid-path scheduler-map;
+                uid-reference;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 1;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 101;
+                    }
+                }
+            }
+            junos-cos-shaping-rate {
+                internal;
+                valid-path "rate shaping-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 2;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 102;
+                    }
+                }
+            }
+            junos-cos-guaranteed-rate {
+                internal;
+                valid-path "rate guaranteed-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 3;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 103;
+                    }
+                }
+            }
+            junos-cos-delay-buffer-rate {
+                internal;
+                valid-path "rate delay-buffer-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 4;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 104;
+                    }
+                }
+            }
+            junos-cos-excess-rate {
+                internal;
+                valid-path "proportion excess-rate | percent excess-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 5;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 105;
+                    }
+                }
+            }
+            junos-cos-traffic-control-profile {
+                internal;
+                valid-path profile-name;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 6;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-identifier;
+                        attribute 108;
+                        tag 106;
+                    }
+                }
+            }
+            junos-cos-shaping-mode {
+                internal;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 7;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 107;
+                    }
+                }
+            }
+            junos-cos-byte-adjust {
+                internal;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 8;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 108;
+                    }
+                }
+            }
+            junos-cos-adjust-minimum {
+                internal;
+                valid-path "rate adjust-minimum";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 9;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 109;
+                    }
+                }
+            }
+            junos-cos-excess-rate-high {
+                internal;
+                valid-path "proportion excess-rate-high | percent excess-rate-high";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 10;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 110;
+                    }
+                }
+            }
+            junos-cos-excess-rate-low {
+                internal;
+                valid-path "proportion excess-rate-low | percent excess-rate-low";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 11;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 111;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-burst {
+                internal;
+                valid-path "burst-size shaping-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 12;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 112;
+                    }
+                }
+            }
+            junos-cos-guaranteed-rate-burst {
+                internal;
+                valid-path "burst-size guaranteed-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 13;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 113;
+                    }
+                }
+            }
+            junos-cos-byte-adjust-frame {
+                internal;
+                valid-path "frame-mode-bytes overhead-accounting";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 14;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 114;
+                    }
+                }
+            }
+            junos-cos-byte-adjust-cell {
+                internal;
+                valid-path "cell-mode-bytes overhead-accounting";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 15;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 115;
+                    }
+                }
+            }
+            #
+            # Attribute 108, tag 100 series only.
+            #
+            # These per-priority shaping-rate attributes can only be 
+            # used as 100-series array-members because they only 
+            # apply to level-1 and level-2 scheduler-nodes.
+            # RADIUS attributes can not be applied to level-1 
+            # scheduler-nodes.  RADIUS attributes can only be applied
+            # level-2 scheduler-nodes when an underlying subsciber
+            # interface is authenticated.  Applying attributes to a
+            # level-2 scheduler-node (e.g. interface-set or ACI-set)
+            # when an underlying subscriber interfaces is authenticated 
+            # implies can only be done using array-member attributes.
+            #
+            junos-cos-shaping-rate-priority-high {
+                internal;
+                valid-path "rate shaping-rate-priority-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 116;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-high-burst {
+                internal;
+                valid-path "burst-size shaping-rate-priority-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 117;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-medium {
+                internal;
+                valid-path "rate shaping-rate-priority-medium";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 118;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-medium-burst {
+                internal;
+                valid-path "burst-size shaping-rate-priority-medium";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 119;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-low {
+                internal;
+                valid-path "rate shaping-rate-priority-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 120;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-low-burst {
+                internal;
+                valid-path "burst-size shaping-rate-priority-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 121;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-high {
+                internal;
+                valid-path "rate shaping-rate-excess-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 122;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-high-burst {
+                internal;
+                valid-path "burst-size shaping-rate-excess-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 123;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-low {
+                internal;
+                valid-path "rate shaping-rate-excess-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 124;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-low-burst {
+                internal;
+                valid-path "burst-size shaping-rate-excess-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 125;
+                    }
+                }
+            }
+            junos-cos-traffic-control-profile-remaining {
+                internal;
+                valid-path profile-name;
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 126;
+                    }
+                }
+            }
+            #
+            # Attribute 108, end.
+            #
+            #
+            # Attribute 146, start.
+            #
+            junos-cos-scheduler {
+                internal;
+                valid-path scheduler-name;
+                variable-type array-identifier;
+                radius {
+                    vendor-id 4874 attribute 146;
+                }
+            }
+            junos-cos-scheduler-tx {
+                internal;
+                valid-path "percent transmit-rate|rate transmit-rate";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 1;
+                    }
+                }
+            }
+            junos-cos-scheduler-bs {
+                internal;
+                valid-path "percent buffer-size|temporal buffer-size";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 2;
+                    }
+                }
+            }
+            junos-cos-scheduler-pri {
+                internal;
+                valid-path priority;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 3;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-low {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 4;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-medium-low {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 5;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-medium-high {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 6;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-high {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 7;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-any {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 8;
+                    }
+                }
+            }
+            junos-cos-scheduler-excess-rate {
+                internal;
+                valid-path "proportion excess-rate | percent excess-rate";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 9;
+                    }
+                }
+            }
+            junos-cos-scheduler-shaping-rate {
+                internal;
+                valid-path "percent shaping-rate | rate shaping-rate";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 10;
+                    }
+                }
+            }
+            junos-cos-scheduler-excess-priority {
+                internal;
+                valid-path excess-priority;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 11;
+                    }
+                }
+            }
+            junos-framed-ip-address {
+                internal;
+                valid-path "destination route access-internal";
+                radius {
+                    vendor-id 0 attribute 8;
+                }
+            }
+            junos-framed-route-ip-address-prefix {
+                internal;
+                valid-path "destination route access";
+                variable-type array-identifier-prefix;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 1;
+                    }
+                }
+            }
+            junos-framed-route-nexthop {
+                internal;
+                valid-path "value next-hop route access";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 2;
+                    }
+                }
+            }
+            junos-framed-route-cost {
+                internal;
+                valid-path "metric route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 3;
+                    }
+                }
+            }
+            junos-framed-route-distance {
+                internal;
+                valid-path "preference route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 5;
+                    }
+                }
+            }
+            junos-framed-route-tag {
+                internal;
+                valid-path "tag route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 6;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-address-prefix {
+                internal;
+                valid-path "destination route access";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 1;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-nexthop {
+                internal;
+                valid-path "value next-hop route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 2;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-cost {
+                internal;
+                valid-path "metric route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 3;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-distance {
+                internal;
+                valid-path "preference route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 5;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-tag {
+                internal;
+                valid-path "tag route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 6;
+                    }
+                }
+            }
+            junos-ipv6-ndra-prefix {
+                internal;
+                valid-path prefix;
+                value-optional;
+                radius {
+                    vendor-id 0 attribute 97;
+                }
+            }
+            junos-routing-instance {
+                internal;
+                valid-path instance_name;
+            }
+            junos-ipv6-rib {
+                internal;
+                valid-path rib_name;
+            }
+            junos-loopback-interface {
+                internal;
+                valid-path "source unnumbered-address";
+                resolve-var;
+            }
+            junos-preferred-source-address {
+                internal;
+                valid-path "preferred-source-address unnumbered-address inet";
+                resolve-var;
+            }
+            junos-preferred-source-ipv6-address {
+                internal;
+                valid-path "preferred-source-address unnumbered-address inet6";
+                resolve-var;
+            }
+            junos-interface-set-name {
+                internal;
+                hybrid;
+                valid-path "interface-set-name | shared-name";
+                radius {
+                    vendor-id 4874 attribute 130;
+                }
+            }
+            junos-ipv6-address {
+                internal;
+                valid-path "source address inet6";
+            }
+            junos-fuf-name {
+                internal;
+                variable-type array-identifier-prefix;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 1;
+                    }
+                }
+            }
+            junos-fuf-term-name {
+                internal;
+                variable-type array-identifier;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 2;
+                    }
+                }
+            }
+            junos-fuf-match-terms {
+                internal;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 3;
+                    }
+                }
+            }
+            junos-fuf-action-terms {
+                internal;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 4;
+                    }
+                }
+            }
+            junos-adf-rule-v4 {
+                internal;
+                valid-path "rule-value rule adf filter inet";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 242;
+                        tag 1;
+                    }
+                }
+            }
+            junos-adf-rule-v6 {
+                internal;
+                valid-path "rule-value rule adf filter inet6";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 242;
+                        tag 3;
+                    }
+                }
+            }
+            junos-vlan-map-id {
+                internal;
+                valid-path vlan-id;
+                radius {
+                    vendor-id 4874 attribute 160;
+                }
+            }
+            junos-mep-id {
+                internal;
+                valid-path "mep-id mep";
+            }
+            junos-md-level {
+                internal;
+                valid-path "level maintenance-domain";
+            }
+            junos-remote-mep-id {
+                internal;
+                valid-path "mep-id remote-mep";
+            }
+            junos-md-name {
+                internal;
+                valid-path "domain-name maintenance-domain";
+            }
+            junos-ma-name {
+                internal;
+                valid-path "ma-name maintenance-association";
+            }
+            /* CET changes */
+            junos-md-name-format {
+                internal;
+                valid-path "name-format maintenance-domain";
+            }
+            junos-remote-ma-name {
+                internal;
+                valid-path "remote-maintenance-association maintenance-association";
+            }
+            junos-ccm-interval {
+                internal;
+                valid-path "interval continuity-check";
+            }
+            junos-loss-threshold {
+                internal;
+                valid-path "loss-threshold continuity-check";
+            }
+            junos-ma-name-format {
+                internal;
+                valid-path "short-name-format maintenance-association";
+            }
+            junos-action-profile {
+                internal;
+                valid-path "action-profile remote-mep | action-profile mep";
+            }
+            /* CET changes */
+            junos-layer2-output-policer {
+                internal;
+                valid-path "output-policer layer2-policer | output-three-color layer2-policer";
+                resolve-var;
+            }
+            junos-subscriber-ipv6-multi-address {
+                internal;
+                valid-path "address demux-source inet6";
+                variable-type array-identifier;
+            }
+            junos-subscriber-demux-ip-address {
+                internal;
+                valid-path "address demux-source inet";
+                variable-type array-identifier;
+            }
+            junos-svlan-interface-set-name {
+                internal;
+                valid-path "interface-set-name | shared-name";
+            }
+            junos-tagged-vlan-interface-set-name {
+                internal;
+                valid-path interface-set-name;
+            }
+            junos-ipv6-dns-server-address {
+                internal;
+                valid-path dns-server-address;
+                variable-type array-identifier;
+            }
+        }
+    }
+    junos-default-profile {
+        interfaces {
+            "$junos-interface-ifd-name" {
+                unit "$junos-underlying-interface-unit" {
+                    family inet;
+                    family inet6;
+                }
+            }
+        }
+    }
+    junos-default-essmd-profile {
+        variables {
+            vsa1;
+            vsa2;
+            vsa3;
+        }
+        extensible-subscriber-services {
+            vsas [ vsa1 vsa2 vsa3 ];
+        }
+    }
+}
+#
+# Make vt100 the default for the console port
+# 
+system {
+    ports {
+        console type vt100;
+    }
+    login {
+        password {
+            minimum-length 6;
+            change-type set-transitions;
+            minimum-changes 1;
+            format sha256;
+        }
+    }
+    compress-configuration-files;
+    commit {
+        constraints {
+            direct-access;
+        }
+    }
+}
+routing-options {
+    rib inet.0 {
+        maximum-prefixes 32768;
+    }
+    rib inet6.0 {
+        maximum-prefixes 20480;
+    }
+    multicast {
+        forwarding-cache {
+            threshold {
+                suppress 16384;
+            }
+        }
+    }
+}
+##
+## Warning: configuration block ignored: unsupported platform (ex3400-24t)
+##
+applications {
+    #
+    # File Transfer Protocol 
+    #
+    application junos-ftp {
+        application-protocol ftp;
+        protocol tcp;
+        destination-port 21;
+    }
+    #
+    # Trivial File Transfer Protocol 
+    #
+    application junos-tftp {
+        application-protocol tftp;
+        protocol udp;
+        destination-port 69;
+    }
+    #
+    # Real Time Streaming Protocol 
+    #       
+    application junos-rtsp {
+        application-protocol rtsp;
+        protocol tcp;
+        destination-port 554;
+    }
+    #
+    # Network Basic Input Output System  - networking protocol used on
+    # Windows networks   session service port
+    #
+    application junos-netbios-session {
+        protocol tcp;
+        destination-port 139;
+    }
+    application junos-smb-session {
+        protocol tcp;
+        destination-port 445;
+    }
+    application junos-ssh {
+        protocol tcp;
+        destination-port 22;
+    }
+    application junos-telnet {
+        protocol tcp;
+        destination-port 23;
+    }
+    application junos-smtp {
+        protocol tcp;
+        destination-port 25;
+    }
+    application junos-tacacs {
+        protocol tcp;
+        destination-port 49;
+    }
+    # TACACS Database Service
+    application junos-tacacs-ds {
+        protocol tcp;
+        destination-port 65;
+    }
+    application junos-dhcp-client {
+        protocol udp;
+        destination-port 68;
+    }
+    application junos-dhcp-server {
+        protocol udp;
+        destination-port 67;
+    }
+    application junos-bootpc {
+        protocol udp;
+        destination-port 68;
+    }
+    application junos-bootps {
+        protocol udp;
+        destination-port 67;
+    }
+    application junos-finger {
+        protocol tcp;
+        destination-port 79;
+    }
+    application junos-http {
+        protocol tcp;
+        destination-port 80;
+    }
+    application junos-https {
+        protocol tcp;
+        destination-port 443;
+    }
+    application junos-pop3 {
+        protocol tcp;
+        destination-port 110;
+    }
+    application junos-ident {
+        protocol tcp;
+        destination-port 113;
+    }
+    application junos-nntp {
+        protocol tcp;
+        destination-port 119;
+    }
+    application junos-ntp {
+        protocol udp;
+        destination-port 123;
+    }
+    application junos-imap {
+        protocol tcp;
+        destination-port 143;
+    }
+    application junos-imaps {
+        protocol tcp;
+        destination-port 993;
+    }
+    application junos-bgp {
+        protocol tcp;
+        destination-port 179;
+    }
+    application junos-ldap {
+        protocol tcp;
+        destination-port 389;
+    }
+    application junos-snpp {
+        protocol tcp;
+        destination-port 444;
+    }
+    application junos-biff {
+        protocol udp;
+        destination-port 512;
+    }
+    # UNIX who
+    application junos-who {
+        protocol udp;
+        destination-port 513;
+    }
+    application junos-syslog {
+        protocol udp;
+        destination-port 514;
+    }
+    # line printer daemon, printer, spooler
+    application junos-printer {
+        protocol tcp;
+        destination-port 515;
+    }
+    application junos-rip {
+        protocol udp;
+        destination-port 520;
+    }
+    # INA sanctioned RADIUS port numbers
+    application junos-radius {
+        protocol udp;
+        destination-port 1812;
+    }
+    application junos-radacct {
+        protocol udp;
+        destination-port 1813;
+    }
+    application junos-nfsd-tcp {
+        protocol tcp;
+        destination-port 2049;
+    }
+    application junos-nfsd-udp {
+        protocol udp;
+        destination-port 2049;
+    }
+    application junos-cvspserver {
+        protocol tcp;
+        destination-port 2401;
+    }
+    # 
+    # Label Distribution Protocol
+    # 
+    application junos-ldp-tcp {
+        protocol tcp;
+        destination-port 646;
+    }
+    application junos-ldp-udp {
+        protocol udp;
+        destination-port 646;
+    }
+    # 
+    # JUNOScript and JUNOScope management
+    # 
+    application junos-xnm-ssl {
+        protocol tcp;
+        destination-port 3220;
+    }
+    application junos-xnm-clear-text {
+        protocol tcp;
+        destination-port 3221;
+    }
+    #
+    # IPSec tunnel
+    #
+    application junos-ike {
+        protocol udp;
+        destination-port 500;
+    }
+    # 
+    # 'junos-routing-inbound' represents routing protocols that may
+    # that may need access the trusted network from the untrusted
+    # network.
+    # 
+    # Set is intended for a UI to display routing involvement choices.
+    #
+    # NOTE:  It is not recommended you use the entire set directly in
+    #        a firewall rule and open up firewall to all of these 
+    #        applications.  Also, you should always specify the source
+    #        and destination prefixes when using each application.
+    #
+    # NOTE: the contents of this set may grow in future JUNOS versions.
+    # 
+    application-set junos-routing-inbound {
+        application junos-bgp;
+        application junos-rip;
+        application junos-ldp-tcp;
+        application junos-ldp-udp;
+    }
+    #
+    # Common Internet File System (cifs)
+    # It runs over netbios and over smb, so construct
+    # an application set to capture it.
+    #
+    application-set junos-cifs {
+        application junos-netbios-session;
+        application junos-smb-session;
+    }
+}
