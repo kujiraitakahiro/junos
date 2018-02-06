@@ -1,0 +1,2861 @@
+# Defines the default for dynamic-profiles
+#
+dynamic-profiles {
+    <*> {
+        variables {
+            junos-interface-unit {
+                internal;
+                valid-path "interface_unit_number|unit-number unit interface interface-set";
+            }
+            junos-interface-ifd-name {
+                internal;
+                valid-path "interface_name|interface-name interface interface-set|underlying-interface";
+            }
+            junos-underlying-interface-unit {
+                internal;
+                valid-path "interface_unit_number|unit-number unit interface interface-set";
+            }
+            junos-underlying-interface {
+                internal;
+                valid-path underlying-interface;
+            }
+            junos-subscriber-ip-address {
+                internal;
+                valid-path "source address inet|address demux-source inet|address source-address from term fast-update-filter inet|address destination-address from term fast-update-filter inet|destination route";
+            }
+            junos-subscriber-ipv6-address {
+                internal;
+                valid-path "source address inet6|address demux-source inet6|address source-address from term fast-update-filter inet6|address destination-address from term fast-update-filter inet6|destination route";
+            }
+            junos-interface-name {
+                internal;
+                valid-path "interface_name|nexthop qualified-next-hop|interface-name|interface";
+            }
+            junos-phy-ifd-name internal;
+            junos-bundle-interface-name {
+                internal;
+                valid-path bundle;
+            }
+            junos-subscriber-mac-address {
+                internal;
+                valid-path mac-address;
+            }
+            junos-igmp-enable {
+                internal;
+                valid-path enab_disab;
+                radius {
+                    vendor-id 4874 {
+                        radius-mapping {
+                            vsa-value 0;
+                            internal-value disable;
+                        }
+                        attribute 23;
+                    }
+                }
+            }
+            junos-igmp-access-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 71;
+                }
+            }
+            junos-igmp-access-source-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 72;
+                }
+            }
+            junos-igmp-version {
+                internal;
+                valid-path version;
+                radius {
+                    vendor-id 4874 attribute 78;
+                }
+            }
+            junos-igmp-immediate-leave {
+                internal;
+                valid-path immediate-leave;
+                radius {
+                    vendor-id 4874 {
+                        radius-mapping {
+                            vsa-value 1;
+                            internal-value immediate-leave;
+                        }
+                        attribute 97;
+                    }
+                }
+            }
+            junos-mld-access-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 74;
+                }
+            }
+            junos-mld-access-source-group-name {
+                internal;
+                valid-path "value group-policy";
+                radius {
+                    vendor-id 4874 attribute 75;
+                }
+            }
+            junos-mld-version {
+                internal;
+                valid-path version;
+                radius {
+                    vendor-id 4874 attribute 77;
+                }
+            }
+            junos-mld-immediate-leave {
+                internal;
+                valid-path immediate-leave;
+                radius {
+                    vendor-id 4874 attribute 100;
+                }
+            }
+            junos-input-filter {
+                internal;
+                valid-path "filter-name input filter inet|filter-name input filter vpls|input filter unit";
+                radius {
+                    vendor-id 4874 attribute 10;
+                    vendor-id 0 attribute 11;
+                }
+            }
+            junos-output-filter {
+                internal;
+                valid-path "filter-name output filter inet|filter-name output filter vpls|output filter unit";
+                radius {
+                    vendor-id 4874 attribute 11;
+                }
+            }
+            junos-input-ipv6-filter {
+                internal;
+                valid-path "filter-name input filter inet6|input filter unit";
+                radius {
+                    vendor-id 4874 attribute 106;
+                }
+            }
+            junos-output-ipv6-filter {
+                internal;
+                valid-path "filter-name output filter inet6|output filter unit";
+                radius {
+                    vendor-id 4874 attribute 107;
+                }
+            }
+            junos-vlan-id {
+                internal;
+                valid-path "vlan-id unit|inner vlan-tags|outer vlan-tags";
+            }
+            junos-stacked-vlan-id {
+                internal;
+                valid-path "outer vlan-tags";
+            }
+            #
+            # Attribute 108, start.
+            #
+            # This attribute has an "old-style" with tags starting 
+            # at 1, and a "new-style" with tags starting at 101.  
+            # Old and new styles can not be mixed.  The new style 
+            # allows these attributes to be array variables similar 
+            # to class-of-service scheduler-maps.
+            #
+            # Also note that vendor-id 48741 is a ddl workaround.  
+            # Developer note: "No, ddl does not like the way it was 
+            # defined before so we had to just make it different.  
+            # But we convert it later to 4874 so you still see it 
+            # as 4874.  It is just a work around for ddl."
+            #
+            junos-cos-scheduler-map {
+                internal;
+                valid-path scheduler-map;
+                uid-reference;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 1;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 101;
+                    }
+                }
+            }
+            junos-cos-shaping-rate {
+                internal;
+                valid-path "rate shaping-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 2;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 102;
+                    }
+                }
+            }
+            junos-cos-guaranteed-rate {
+                internal;
+                valid-path "rate guaranteed-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 3;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 103;
+                    }
+                }
+            }
+            junos-cos-delay-buffer-rate {
+                internal;
+                valid-path "rate delay-buffer-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 4;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 104;
+                    }
+                }
+            }
+            junos-cos-excess-rate {
+                internal;
+                valid-path "proportion excess-rate | percent excess-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 5;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 105;
+                    }
+                }
+            }
+            junos-cos-traffic-control-profile {
+                internal;
+                valid-path profile-name;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 6;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-identifier;
+                        attribute 108;
+                        tag 106;
+                    }
+                }
+            }
+            junos-cos-shaping-mode {
+                internal;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 7;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 107;
+                    }
+                }
+            }
+            junos-cos-byte-adjust {
+                internal;
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 8;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 108;
+                    }
+                }
+            }
+            junos-cos-adjust-minimum {
+                internal;
+                valid-path "rate adjust-minimum";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 9;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 109;
+                    }
+                }
+            }
+            junos-cos-excess-rate-high {
+                internal;
+                valid-path "proportion excess-rate-high | percent excess-rate-high";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 10;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 110;
+                    }
+                }
+            }
+            junos-cos-excess-rate-low {
+                internal;
+                valid-path "proportion excess-rate-low | percent excess-rate-low";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 11;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 111;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-burst {
+                internal;
+                valid-path "burst-size shaping-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 12;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 112;
+                    }
+                }
+            }
+            junos-cos-guaranteed-rate-burst {
+                internal;
+                valid-path "burst-size guaranteed-rate";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 13;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 113;
+                    }
+                }
+            }
+            junos-cos-byte-adjust-frame {
+                internal;
+                valid-path "frame-mode-bytes overhead-accounting";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 14;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 114;
+                    }
+                }
+            }
+            junos-cos-byte-adjust-cell {
+                internal;
+                valid-path "cell-mode-bytes overhead-accounting";
+                radius {
+                    vendor-id 4874 {
+                        attribute 108;
+                        tag 15;
+                    }
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 115;
+                    }
+                }
+            }
+            #
+            # Attribute 108, tag 100 series only.
+            #
+            # These per-priority shaping-rate attributes can only be 
+            # used as 100-series array-members because they only 
+            # apply to level-1 and level-2 scheduler-nodes.
+            # RADIUS attributes can not be applied to level-1 
+            # scheduler-nodes.  RADIUS attributes can only be applied
+            # level-2 scheduler-nodes when an underlying subsciber
+            # interface is authenticated.  Applying attributes to a
+            # level-2 scheduler-node (e.g. interface-set or ACI-set)
+            # when an underlying subscriber interfaces is authenticated 
+            # implies can only be done using array-member attributes.
+            #
+            junos-cos-shaping-rate-priority-high {
+                internal;
+                valid-path "rate shaping-rate-priority-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 116;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-high-burst {
+                internal;
+                valid-path "burst-size shaping-rate-priority-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 117;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-medium {
+                internal;
+                valid-path "rate shaping-rate-priority-medium";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 118;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-medium-burst {
+                internal;
+                valid-path "burst-size shaping-rate-priority-medium";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 119;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-low {
+                internal;
+                valid-path "rate shaping-rate-priority-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 120;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-priority-low-burst {
+                internal;
+                valid-path "burst-size shaping-rate-priority-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 121;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-high {
+                internal;
+                valid-path "rate shaping-rate-excess-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 122;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-high-burst {
+                internal;
+                valid-path "burst-size shaping-rate-excess-high";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 123;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-low {
+                internal;
+                valid-path "rate shaping-rate-excess-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 124;
+                    }
+                }
+            }
+            junos-cos-shaping-rate-excess-low-burst {
+                internal;
+                valid-path "burst-size shaping-rate-excess-low";
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 125;
+                    }
+                }
+            }
+            junos-cos-traffic-control-profile-remaining {
+                internal;
+                valid-path profile-name;
+                radius {
+                    vendor-id 48741 {
+                        variable-type array-member;
+                        attribute 108;
+                        tag 126;
+                    }
+                }
+            }
+            #
+            # Attribute 108, end.
+            #
+            #
+            # Attribute 146, start.
+            #
+            junos-cos-scheduler {
+                internal;
+                valid-path scheduler-name;
+                variable-type array-identifier;
+                radius {
+                    vendor-id 4874 attribute 146;
+                }
+            }
+            junos-cos-scheduler-tx {
+                internal;
+                valid-path "percent transmit-rate|rate transmit-rate";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 1;
+                    }
+                }
+            }
+            junos-cos-scheduler-bs {
+                internal;
+                valid-path "percent buffer-size|temporal buffer-size";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 2;
+                    }
+                }
+            }
+            junos-cos-scheduler-pri {
+                internal;
+                valid-path priority;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 3;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-low {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 4;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-medium-low {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 5;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-medium-high {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 6;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-high {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 7;
+                    }
+                }
+            }
+            junos-cos-scheduler-dropfile-any {
+                internal;
+                valid-path drop-profile;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 8;
+                    }
+                }
+            }
+            junos-cos-scheduler-excess-rate {
+                internal;
+                valid-path "proportion excess-rate | percent excess-rate";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 9;
+                    }
+                }
+            }
+            junos-cos-scheduler-shaping-rate {
+                internal;
+                valid-path "percent shaping-rate | rate shaping-rate";
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 10;
+                    }
+                }
+            }
+            junos-cos-scheduler-excess-priority {
+                internal;
+                valid-path excess-priority;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 146;
+                        tag 11;
+                    }
+                }
+            }
+            junos-framed-ip-address {
+                internal;
+                valid-path "destination route access-internal";
+                radius {
+                    vendor-id 0 attribute 8;
+                }
+            }
+            junos-framed-route-ip-address-prefix {
+                internal;
+                valid-path "destination route access";
+                variable-type array-identifier-prefix;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 1;
+                    }
+                }
+            }
+            junos-framed-route-nexthop {
+                internal;
+                valid-path "value next-hop route access";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 2;
+                    }
+                }
+            }
+            junos-framed-route-cost {
+                internal;
+                valid-path "metric route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 3;
+                    }
+                }
+            }
+            junos-framed-route-distance {
+                internal;
+                valid-path "preference route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 5;
+                    }
+                }
+            }
+            junos-framed-route-tag {
+                internal;
+                valid-path "tag route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 22;
+                        sub-attribute 6;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-address-prefix {
+                internal;
+                valid-path "destination route access";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 1;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-nexthop {
+                internal;
+                valid-path "value next-hop route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 2;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-cost {
+                internal;
+                valid-path "metric route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 3;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-distance {
+                internal;
+                valid-path "preference route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 5;
+                    }
+                }
+            }
+            junos-framed-route-ipv6-tag {
+                internal;
+                valid-path "tag route access";
+                variable-type array-member;
+                radius {
+                    vendor-id 0 {
+                        attribute 99;
+                        sub-attribute 6;
+                    }
+                }
+            }
+            junos-ipv6-ndra-prefix {
+                internal;
+                valid-path prefix;
+                value-optional;
+                radius {
+                    vendor-id 0 attribute 97;
+                }
+            }
+            junos-routing-instance {
+                internal;
+                valid-path instance_name;
+            }
+            junos-ipv6-rib {
+                internal;
+                valid-path rib_name;
+            }
+            junos-loopback-interface {
+                internal;
+                valid-path "source unnumbered-address";
+                resolve-var;
+            }
+            junos-preferred-source-address {
+                internal;
+                valid-path "preferred-source-address unnumbered-address inet";
+                resolve-var;
+            }
+            junos-preferred-source-ipv6-address {
+                internal;
+                valid-path "preferred-source-address unnumbered-address inet6";
+                resolve-var;
+            }
+            junos-interface-set-name {
+                internal;
+                hybrid;
+                valid-path "interface-set-name | shared-name";
+                radius {
+                    vendor-id 4874 attribute 130;
+                }
+            }
+            junos-ipv6-address {
+                internal;
+                valid-path "source address inet6";
+            }
+            junos-fuf-name {
+                internal;
+                variable-type array-identifier-prefix;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 1;
+                    }
+                }
+            }
+            junos-fuf-term-name {
+                internal;
+                variable-type array-identifier;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 2;
+                    }
+                }
+            }
+            junos-fuf-match-terms {
+                internal;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 3;
+                    }
+                }
+            }
+            junos-fuf-action-terms {
+                internal;
+                variable-type array-member;
+                radius {
+                    vendor-id 4874 {
+                        attribute 148;
+                        tag 4;
+                    }
+                }
+            }
+            junos-adf-rule-v4 {
+                internal;
+                valid-path "rule-value rule adf filter inet";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 242;
+                        tag 1;
+                    }
+                }
+            }
+            junos-adf-rule-v6 {
+                internal;
+                valid-path "rule-value rule adf filter inet6";
+                variable-type array-identifier;
+                radius {
+                    vendor-id 0 {
+                        attribute 242;
+                        tag 3;
+                    }
+                }
+            }
+            junos-vlan-map-id {
+                internal;
+                valid-path vlan-id;
+                radius {
+                    vendor-id 4874 attribute 160;
+                }
+            }
+            junos-mep-id {
+                internal;
+                valid-path "mep-id mep";
+            }
+            junos-md-level {
+                internal;
+                valid-path "level maintenance-domain";
+            }
+            junos-remote-mep-id {
+                internal;
+                valid-path "mep-id remote-mep";
+            }
+            junos-md-name {
+                internal;
+                valid-path "domain-name maintenance-domain";
+            }
+            junos-ma-name {
+                internal;
+                valid-path "ma-name maintenance-association";
+            }
+            /* CET changes */
+            junos-md-name-format {
+                internal;
+                valid-path "name-format maintenance-domain";
+            }
+            junos-remote-ma-name {
+                internal;
+                valid-path "remote-maintenance-association maintenance-association";
+            }
+            junos-ccm-interval {
+                internal;
+                valid-path "interval continuity-check";
+            }
+            junos-loss-threshold {
+                internal;
+                valid-path "loss-threshold continuity-check";
+            }
+            junos-ma-name-format {
+                internal;
+                valid-path "short-name-format maintenance-association";
+            }
+            junos-action-profile {
+                internal;
+                valid-path "action-profile remote-mep | action-profile mep";
+            }
+            /* CET changes */
+            junos-layer2-output-policer {
+                internal;
+                valid-path "output-policer layer2-policer | output-three-color layer2-policer";
+                resolve-var;
+            }
+            junos-subscriber-ipv6-multi-address {
+                internal;
+                valid-path "address demux-source inet6";
+                variable-type array-identifier;
+            }
+            junos-subscriber-demux-ip-address {
+                internal;
+                valid-path "address demux-source inet";
+                variable-type array-identifier;
+            }
+            junos-svlan-interface-set-name {
+                internal;
+                valid-path "interface-set-name | shared-name";
+            }
+            junos-tagged-vlan-interface-set-name {
+                internal;
+                valid-path interface-set-name;
+            }
+            junos-ipv6-dns-server-address {
+                internal;
+                valid-path dns-server-address;
+                variable-type array-identifier;
+            }
+        }
+    }
+    junos-default-profile {
+        interfaces {
+            "$junos-interface-ifd-name" {
+                unit "$junos-underlying-interface-unit" {
+                    family inet;
+                    family inet6;
+                }
+            }
+        }
+    }
+    junos-default-essmd-profile {
+        variables {
+            vsa1;
+            vsa2;
+            vsa3;
+        }
+        extensible-subscriber-services {
+            vsas [ vsa1 vsa2 vsa3 ];
+        }
+    }
+}
+#
+# Make vt100 the default for the console port
+# 
+system {
+    ports {
+        console type vt100;
+    }
+    login {
+        password {
+            minimum-length 6;
+            change-type set-transitions;
+            minimum-changes 1;
+            format sha256;
+        }
+    }
+    compress-configuration-files;
+    commit {
+        constraints {
+            direct-access;
+        }
+    }
+}
+chassis {
+    cluster {
+        fabric-monitoring;
+        heartbeat-interval 1000;
+        heartbeat-threshold 3;
+        initial-hold 30;
+        redundancy-group 0 {
+            node 0 priority 1;
+            node 1 priority 1;
+        }
+    }
+}
+security {
+    log {
+        rate-cap 150;
+    }
+    #
+    # VoIP ALG defaults 
+    #
+    alg {
+        h323 {
+            endpoint-registration-timeout 64800;
+            application-screen {
+                message-flood {
+                    gatekeeper threshold 1000;
+                }
+            }
+        }
+        mgcp {
+            inactive-media-timeout 120;
+            transaction-timeout 30;
+            maximum-call-duration 720;
+            application-screen {
+                message-flood threshold 1000;
+                connection-flood threshold 200;
+            }
+        }
+        sccp {
+            inactive-media-timeout 120;
+            application-screen {
+                call-flood threshold 20;
+            }
+        }
+        sip {
+            inactive-media-timeout 120;
+            maximum-call-duration 720;
+            t1-interval 500;
+            t4-interval 5;
+            c-timeout 3;
+            application-screen {
+                protect {
+                    deny {
+                        timeout 5;
+                    }
+                }
+            }
+        }
+    }
+    utm {
+        custom-objects {
+            mime-pattern {
+                junos-default-bypass-mime {
+                    value [ text/css audio/ video/ image/ ];
+                }
+            }
+            filename-extension {
+                junos-default-extension {
+                    value [ 386 ACE ARJ ASP BAT BIN BZ2 CAB CHM CLA CMD COM CPL DLL DOC DOT DPL DRV DWG ELF EMF EML EXE FON FPM GEA GZ HA HLP HTA HTM HTML HTT HXS ICE INI ITSF JAR JPEG JPG JS JSE LHA LNK LZH MBX "MD?" MIME MSG MSI MSO NWS OCX OTM "OV?" PDF PHP PHT PIF PK PL PLG "PP?" PRG PRJ RAR REG RTF SCR SH SHS SWF SYS TAR TGZ THE TSP VBE VBS VXD WSF WSH "XL?" XML ZIP ];
+                }
+            }
+            # Juniper enhanced custom categories
+            custom-url-enhanced-category {
+                Enhanced_Adult_Material {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Business_and_Economy {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Education {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Government {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_News_and_Media {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Religion {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Society_and_Lifestyles {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Special_Events {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Information_Technology {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Abortion {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Advocacy_Groups {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Entertainment {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Gambling {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Games {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Illegal_or_Questionable {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Job_Search {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Shopping {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Sports {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Tasteless {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Travel {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Vehicles {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Violence {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Weapons {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Drugs {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Militancy_and_Extremist {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Racism_and_Hate {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Health {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_URL_Translation_Sites {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Advertisements {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_User_Defined {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Nudity {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Adult_Content {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Sex {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Financial_Data_and_Services {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Cultural_Institutions {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_MP3_and_Audio_Download_Services {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Military {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Political_Organizations {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_General_Email {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Proxy_Avoidance {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Search_Engines_and_Portals {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_Hosting {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_Chat {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Hacking {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Alternative_Journals {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Non_Traditional_Religions_and_Occult_and_Folklore {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Traditional_Religions {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Restaurants_and_Dining {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Gay_or_Lesbian_or_Bisexual_Interest {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Personals_and_Dating {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Alcohol_and_Tobacco {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Prescribed_Medications {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Supplements_and_Unregulated_Compounds {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Abused_Drugs {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Internet_Communication {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Pro_Choice {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Pro_Life {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Sex_Education {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Lingerie_and_Swimsuit {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Online_Brokerage_and_Trading {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Educational_Institutions {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Instant_Messaging {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Freeware_and_Software_Download {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Pay_to_Surf {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Internet_Auctions {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Real_Estate {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Hobbies {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Sport_Hunting_and_Gun_Clubs {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Internet_Telephony {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Streaming_Media {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Productivity {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Marijuana {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Message_Boards_and_Forums {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Personal_Network_Storage_and_Backup {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Internet_Radio_and_TV {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Peer_to_Peer_File_Sharing {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Bandwidth {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Social_Networking_and_Personal_Sites {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Educational_Materials {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Reference_Materials {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Social_Organizations {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Service_and_Philanthropic_Organizations {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Social_and_Affiliation_Organizations {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Professional_and_Worker_Organizations {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Security {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Malicious_Web_Sites {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Computer_Security {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Miscellaneous {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Images_Media {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Image_Servers {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Private_IP_Addresses {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Content_Delivery_Networks {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Dynamic_Content {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Network_Errors {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Spyware {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_File_Download_Servers {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Phishing_and_Other_Frauds {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Keyloggers {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Potentially_Unwanted_Software {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Bot_Networks {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Extended_Protection {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Elevated_Exposure {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Emerging_Exploits {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Potentially_Damaging_Content {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Organizational_Email {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Text_and_Media_Messaging {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_and_Email_Spam {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_Collaboration {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Parked_Domain {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Hosted_Business_Applications {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Blogs_and_Personal_Sites {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Malicious_Embedded_Link {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Malicious_Embedded_iFrame {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Suspicious_Embedded_Link {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Surveillance {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Educational_Video {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Entertainment_Video {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Viral_Video {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Dynamic_DNS {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Potentially_Exploited_Documents {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Mobile_Malware {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Unauthorized_Mobile_Marketplaces {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Custom_Encrypted_Payloads {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Files_Containing_Passwords {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Advanced_Malware_Command_and_Control {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Advanced_Malware_Payloads {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Social_Web_Facebook {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Social_Web_Youtube {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Social_Web_Twitter {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Social_Web_Linkedin {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Application_and_Software_Download {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Blog_Commenting {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Blog_Posting {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Classifieds_Posting {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Intolerance {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Media_File_Download {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Non_Traditional_Religions {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Suspicious_Content {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_Images {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_Infrastructure {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Website_Translation {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Compromised_Websites {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Newly_Registered_Websites {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Collaboration_Office {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Office_Mail {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Office_Drive {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Office_Documents {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Office_Apps {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_Analytics {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Web_and_Email_Marketing {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+                Enhanced_Nutrition {
+                    value "Predefined in juniper-enhanced websense server";
+                }
+            }
+        }
+        feature-profile {
+            anti-virus {
+                #
+                # should not set no-autoupdate at any time
+                # 
+                mime-whitelist {
+                    list junos-default-bypass-mime;
+                }
+                sophos-engine {
+                    pattern-update {
+                        url https://update.juniper-updates.net/SAV/;
+                        interval 1440;
+                    }
+                    profile junos-sophos-av-defaults {
+                        fallback-options {
+                            default log-and-permit;
+                            content-size log-and-permit;
+                            engine-not-ready log-and-permit;
+                            timeout log-and-permit;
+                            out-of-resources log-and-permit;
+                            too-many-requests log-and-permit;
+                        }
+                        scan-options {
+                            uri-check;
+                            content-size-limit 10000;
+                            timeout 180;
+                        }
+                        notification-options {
+                            virus-detection {
+                                type message;
+                                no-notify-mail-sender;
+                                custom-message "VIRUS WARNING";
+                            }
+                            fallback-block {
+                                type message;
+                                no-notify-mail-sender;
+                            }
+                        }
+                    }
+                }
+            }
+            web-filtering {
+                websense-redirect {
+                    profile junos-wf-websense-default {
+                        custom-block-message "Juniper Web Filtering has been set to block this site.";
+                        fallback-settings {
+                            default log-and-permit;
+                            server-connectivity log-and-permit;
+                            timeout log-and-permit;
+                            too-many-requests log-and-permit;
+                        }
+                    }
+                }
+                juniper-local {
+                    profile junos-wf-local-default {
+                        custom-block-message "Juniper Web Filtering has been set to block this site.";
+                        fallback-settings {
+                            default log-and-permit;
+                            server-connectivity log-and-permit;
+                            timeout log-and-permit;
+                            too-many-requests log-and-permit;
+                        }
+                    }
+                }
+                juniper-enhanced {
+                    server {
+                        host rp.cloud.threatseeker.com;
+                        port 80;
+                    }
+                    profile junos-wf-enhanced-default {
+                        category {
+                            Enhanced_Adult_Material {
+                                action block;
+                            }
+                            Enhanced_Gambling {
+                                action block;
+                            }
+                            Enhanced_Games {
+                                action block;
+                            }
+                            Enhanced_Illegal_or_Questionable {
+                                action block;
+                            }
+                            Enhanced_Tasteless {
+                                action block;
+                            }
+                            Enhanced_Violence {
+                                action block;
+                            }
+                            Enhanced_Weapons {
+                                action block;
+                            }
+                            Enhanced_Militancy_and_Extremist {
+                                action block;
+                            }
+                            Enhanced_Racism_and_Hate {
+                                action block;
+                            }
+                            Enhanced_Advertisements {
+                                action block;
+                            }
+                            Enhanced_Nudity {
+                                action block;
+                            }
+                            Enhanced_Adult_Content {
+                                action block;
+                            }
+                            Enhanced_Sex {
+                                action block;
+                            }
+                            Enhanced_Hacking {
+                                action block;
+                            }
+                            Enhanced_Personals_and_Dating {
+                                action block;
+                            }
+                            Enhanced_Alcohol_and_Tobacco {
+                                action block;
+                            }
+                            Enhanced_Abused_Drugs {
+                                action block;
+                            }
+                            Enhanced_Marijuana {
+                                action block;
+                            }
+                            Enhanced_Malicious_Web_Sites {
+                                action block;
+                            }
+                            Enhanced_Spyware {
+                                action block;
+                            }
+                            Enhanced_Phishing_and_Other_Frauds {
+                                action block;
+                            }
+                            Enhanced_Keyloggers {
+                                action block;
+                            }
+                            Enhanced_Emerging_Exploits {
+                                action block;
+                            }
+                            Enhanced_Potentially_Damaging_Content {
+                                action block;
+                            }
+                            Enhanced_Malicious_Embedded_Link {
+                                action block;
+                            }
+                            Enhanced_Malicious_Embedded_iFrame {
+                                action block;
+                            }
+                            Enhanced_Suspicious_Embedded_Link {
+                                action block;
+                            }
+                            Enhanced_Potentially_Unwanted_Software {
+                                action block;
+                            }
+                            Enhanced_Potentially_Exploited_Documents {
+                                action block;
+                            }
+                            Enhanced_Mobile_Malware {
+                                action block;
+                            }
+                            Enhanced_Unauthorized_Mobile_Marketplaces {
+                                action block;
+                            }
+                            Enhanced_Custom_Encrypted_Payloads {
+                                action block;
+                            }
+                            Enhanced_Files_Containing_Passwords {
+                                action block;
+                            }
+                            Enhanced_Advanced_Malware_Command_and_Control {
+                                action block;
+                            }
+                            Enhanced_Advanced_Malware_Payloads {
+                                action block;
+                            }
+                        }
+                        default log-and-permit;
+                        custom-block-message "Juniper Web Filtering has been set to block this site.";
+                        fallback-settings {
+                            default log-and-permit;
+                            server-connectivity log-and-permit;
+                            timeout log-and-permit;
+                            too-many-requests log-and-permit;
+                        }
+                    }
+                }
+            }
+            anti-spam {
+                sbl {
+                    profile junos-as-defaults {
+                        sbl-default-server;
+                        spam-action block;
+                        custom-tag-string ***SPAM***;
+                    }
+                }
+            }
+        }
+        utm-policy junos-av-policy {
+            anti-virus {
+                http-profile junos-sophos-av-defaults;
+                ftp {
+                    upload-profile junos-sophos-av-defaults;
+                    download-profile junos-sophos-av-defaults;
+                }
+                smtp-profile junos-sophos-av-defaults;
+                pop3-profile junos-sophos-av-defaults;
+                imap-profile junos-sophos-av-defaults;
+            }
+        }
+        utm-policy junos-wf-policy {
+            web-filtering {
+                http-profile junos-wf-enhanced-default;
+            }
+        }
+        utm-policy junos-av-wf-policy {
+            anti-virus {
+                http-profile junos-sophos-av-defaults;
+                ftp {
+                    upload-profile junos-sophos-av-defaults;
+                    download-profile junos-sophos-av-defaults;
+                }
+                smtp-profile junos-sophos-av-defaults;
+                pop3-profile junos-sophos-av-defaults;
+                imap-profile junos-sophos-av-defaults;
+            }
+            web-filtering {
+                http-profile junos-wf-enhanced-default;
+            }
+        }
+    }
+    #
+    # junos-host zone defaults (zone to manage the host traffic)
+    #
+    zones {
+        security-zone junos-host;
+    }
+}
+#
+# Defines defaults for event-options
+#
+event-options {
+    max-events-queued 1000;
+}
+##
+## Warning: configuration block ignored: unsupported platform (srx300)
+##
+multicast-snooping-options {
+    process-enable;
+}
+#
+# Predefined applications
+#
+applications {
+    #
+    # File Transfer Protocol 
+    #
+    application junos-ftp {
+        application-protocol ftp;
+        protocol tcp;
+        destination-port 21;
+    }
+    application junos-ftp-data {
+        application-protocol ftp-data;
+        protocol tcp;
+    }
+    #
+    # Trivial File Transfer Protocol 
+    #
+    application junos-tftp {
+        application-protocol tftp;
+        protocol udp;
+        destination-port 69;
+    }
+    #
+    # Real Time Streaming Protocol 
+    #       
+    application junos-rtsp {
+        application-protocol rtsp;
+        protocol tcp;
+        destination-port 554;
+    }
+    #
+    # Network Basic Input Output System  - networking protocol used on
+    # Windows networks   session service port
+    #
+    application junos-netbios-session {
+        protocol tcp;
+        destination-port 139;
+    }
+    application junos-smb-session {
+        protocol tcp;
+        destination-port 445;
+    }
+    application junos-ssh {
+        protocol tcp;
+        destination-port 22;
+    }
+    application junos-telnet {
+        protocol tcp;
+        destination-port 23;
+    }
+    application junos-smtp {
+        protocol tcp;
+        destination-port 25;
+    }
+    application junos-smtps {
+        term t1 protocol tcp destination-port 587;
+        term t2 protocol tcp destination-port 465;
+    }
+    application junos-tacacs {
+        protocol tcp;
+        destination-port 49;
+    }
+    # TACACS Database Service
+    application junos-tacacs-ds {
+        protocol tcp;
+        destination-port 65;
+    }
+    application junos-dhcp-client {
+        protocol udp;
+        destination-port 68;
+    }
+    application junos-dhcp-server {
+        protocol udp;
+        destination-port 67;
+    }
+    application junos-bootpc {
+        protocol udp;
+        destination-port 68;
+    }
+    application junos-bootps {
+        protocol udp;
+        destination-port 67;
+    }
+    application junos-finger {
+        protocol tcp;
+        destination-port 79;
+    }
+    application junos-http {
+        application-protocol http;
+        protocol tcp;
+        destination-port 80;
+    }
+    application junos-https {
+        protocol tcp;
+        destination-port 443;
+    }
+    application junos-pop3 {
+        protocol tcp;
+        destination-port 110;
+    }
+    application junos-ident {
+        protocol tcp;
+        destination-port 113;
+    }
+    application junos-nntp {
+        protocol tcp;
+        destination-port 119;
+    }
+    application junos-ntp {
+        protocol udp;
+        destination-port 123;
+    }
+    application junos-imap {
+        protocol tcp;
+        destination-port 143;
+    }
+    application junos-imaps {
+        protocol tcp;
+        destination-port 993;
+    }
+    application junos-bgp {
+        protocol tcp;
+        destination-port 179;
+    }
+    application junos-ldap {
+        protocol tcp;
+        destination-port 389;
+    }
+    application junos-snpp {
+        protocol tcp;
+        destination-port 444;
+    }
+    application junos-biff {
+        protocol udp;
+        destination-port 512;
+    }
+    # UNIX who
+    application junos-who {
+        protocol udp;
+        destination-port 513;
+    }
+    application junos-syslog {
+        protocol udp;
+        destination-port 514;
+    }
+    # line printer daemon, printer, spooler
+    application junos-printer {
+        protocol tcp;
+        destination-port 515;
+    }
+    application junos-rip {
+        protocol udp;
+        destination-port 520;
+    }
+    # INA sanctioned RADIUS port numbers
+    application junos-radius {
+        protocol udp;
+        destination-port 1812;
+    }
+    application junos-radacct {
+        protocol udp;
+        destination-port 1813;
+    }
+    application junos-nfsd-tcp {
+        protocol tcp;
+        destination-port 2049;
+    }
+    application junos-nfsd-udp {
+        protocol udp;
+        destination-port 2049;
+    }
+    application junos-cvspserver {
+        protocol tcp;
+        destination-port 2401;
+    }
+    # 
+    # Label Distribution Protocol
+    # 
+    application junos-ldp-tcp {
+        protocol tcp;
+        destination-port 646;
+    }
+    application junos-ldp-udp {
+        protocol udp;
+        destination-port 646;
+    }
+    # 
+    # JUNOScript and JUNOScope management
+    # 
+    application junos-xnm-ssl {
+        protocol tcp;
+        destination-port 3220;
+    }
+    application junos-xnm-clear-text {
+        protocol tcp;
+        destination-port 3221;
+    }
+    #
+    # IPSec tunnel
+    #
+    application junos-ike {
+        protocol udp;
+        destination-port 500;
+    }
+    #
+    # Any IPv4 application 
+    #
+    application any {
+        term t1 protocol 0;
+    }
+    #
+    # America Online instant messaging services
+    #
+    application junos-aol {
+        term t1 protocol 6 destination-port 5190-5193;
+    }
+    #
+    # Character generator protocol
+    #
+    application junos-chargen {
+        term t1 protocol udp destination-port 19;
+    }
+    #
+    # DHCP Relay services 
+    #
+    application junos-dhcp-relay {
+        term t1 protocol udp destination-port 67;
+    }
+    #
+    # Discard  protocol
+    #
+    application junos-discard {
+        term t1 protocol udp destination-port 9;
+    }
+    #
+    # DNS
+    #
+    application junos-dns-udp {
+        term t1 alg dns protocol udp destination-port 53;
+    }
+    application junos-dns-tcp {
+        term t1 alg dns protocol tcp destination-port 53;
+    }
+    #
+    # Echo protocol
+    #
+    application junos-echo {
+        term t1 protocol udp destination-port 7;
+    }
+    #
+    # Gopher internet protocol 
+    #
+    application junos-gopher {
+        term t1 protocol tcp destination-port 70;
+    }
+    #
+    # GPRS Tunneling Protocol UDP
+    #
+    application junos-gtp {
+        term t1 protocol udp destination-port 2123;
+    }
+    #
+    # Gnutella File Sharing Protocol 
+    #
+    application junos-gnutella {
+        term t1 protocol udp destination-port 6346-6347;
+    }
+    #
+    # Generic Routing Encapsulation Protocol
+    #
+    application junos-gre {
+        term t1 protocol 47;
+    }
+    #
+    # HTTP extension
+    #
+    application junos-http-ext {
+        term t1 protocol tcp destination-port 7001;
+    }
+    #
+    # ICMP All Traffic
+    #   This can be made to be more restrictive by specifying icmp
+    #   type and code.
+    #       
+    application junos-icmp-all {
+        term t1 protocol icmp;
+    }
+    #
+    # ICMP Ping.
+    #   The echo-reply is allowed upon return
+    #
+    application junos-icmp-ping {
+        term t1 protocol icmp icmp-type echo-request;
+    }
+    #
+    # Internet locator service
+    #
+    application junos-internet-locator-service {
+        term t1 protocol tcp destination-port 389;
+    }
+    #
+    # IKE protocol
+    #
+    application junos-ike-nat {
+        term t1 protocol udp destination-port 4500;
+    }
+    #
+    # Internet Relay Chat protocol
+    #
+    application junos-irc {
+        term t1 protocol tcp destination-port 6660-6669;
+    }
+    #
+    # L2TP tunnelng protocol
+    #
+    application junos-l2tp {
+        term t1 protocol udp destination-port 1701;
+    }
+    #
+    # Line Printer Daemon protocol
+    #
+    application junos-lpr {
+        term t1 protocol tcp destination-port 515;
+    }
+    #
+    # Mail (SMTP) protocol
+    #
+    application junos-mail {
+        term t1 protocol tcp destination-port 25;
+    }
+    #
+    # H.323 Protocol for audio/video conferencing 
+    #
+    application junos-h323 {
+        term t1 alg q931 protocol tcp destination-port 1720;
+        term t2 alg ras protocol udp destination-port 1719;
+        term t3 protocol tcp destination-port 1503;
+        term t4 protocol tcp destination-port 389;
+        term t5 protocol tcp destination-port 522;
+        term t6 protocol tcp destination-port 1731;
+    }
+    #
+    # MGCP Protocol 
+    #
+    application junos-mgcp-ua {
+        term t1 alg mgcp-ua protocol udp destination-port 2427;
+    }
+    application junos-mgcp-ca {
+        term t1 alg mgcp-ca protocol udp destination-port 2727;
+    }
+    #
+    # Microsoft Network Messenger
+    #
+    application junos-msn {
+        term t1 protocol tcp destination-port 1863;
+    }
+    #
+    #  Microsoft RPC
+    #
+    application junos-ms-rpc-tcp {
+        term t1 alg ms-rpc protocol tcp destination-port 135;
+    }
+    application junos-ms-rpc-udp {
+        term t1 alg ms-rpc protocol udp destination-port 135;
+    }
+    #
+    #  Microsoft RPC EPM (End Point Mapper)
+    #
+    application junos-ms-rpc-epm {
+        term t1 protocol tcp uuid e1af8308-5d1f-11c9-91a4-08002b14a0fa;
+    }
+    #
+    #  Microsoft RPC Exchange Directory RFR
+    #
+    application junos-ms-rpc-msexchange-directory-rfr {
+        term t1 protocol tcp uuid 1544f5e0-613c-11d1-93df-00c04fd7bd09;
+    }
+    #
+    #  Microsoft RPC Exchange Information Store
+    #
+    application junos-ms-rpc-msexchange-info-store {
+        term t1 protocol tcp uuid a4f1db00-ca47-1067-b31f-00dd010662da;
+    }
+    #
+    #  Microsoft RPC Exchange Directory NSP
+    #
+    application junos-ms-rpc-msexchange-directory-nsp {
+        term t1 protocol tcp uuid f5cc5a18-4264-101a-8c59-08002b2f8426;
+    }
+    #
+    #  Microsoft RPC DCOM
+    #
+    application junos-ms-rpc-wmic-admin {
+        term t1 protocol tcp uuid a9e69610-b80d-11d0-b9b9-00a0c922e750;
+    }
+    application junos-ms-rpc-wmic-webm-level1login {
+        term t1 protocol tcp uuid f309ad18-d86a-11d0-a075-00c04fb68820;
+    }
+    application junos-ms-rpc-wmic-webm-objectsink {
+        term t1 protocol tcp uuid 7c857801-7381-11cf-884d-00aa004b2e24;
+    }
+    application junos-ms-rpc-wmic-webm-services {
+        term t1 protocol tcp uuid 9556dc99-828c-11cf-a37e-00aa003240c7;
+    }
+    application junos-ms-rpc-wmic-webm-callresult {
+        term t1 protocol tcp uuid 44aca675-e8fc-11d0-a07c-00c04fb68820;
+    }
+    application junos-ms-rpc-wmic-webm-login-clientid {
+        term t1 protocol tcp uuid d4781cd6-e5d3-44df-ad94-930efe48a887;
+    }
+    application junos-ms-rpc-wmic-webm-login-helper {
+        term t1 protocol tcp uuid 541679ab-2e5f-11d3-b34e-00104bcc4b4a;
+    }
+    application junos-ms-rpc-wmic-webm-refreshing-services {
+        term t1 protocol tcp uuid 2c9273e0-1dc3-11d3-b364-00105a1f8177;
+    }
+    application junos-ms-rpc-wmic-webm-remote-refresher {
+        term t1 protocol tcp uuid f1e9c5b2-f59b-11d2-b362-00105a1f8177;
+    }
+    application junos-ms-rpc-wmic-webm-shutdown {
+        term t1 protocol tcp uuid f309ad18-d86a-11d0-a075-00c04fb68820;
+    }
+    application junos-ms-rpc-wmic-webm-classobject {
+        term t1 protocol tcp uuid dc12a681-737f-11cf-884d-00aa004b2e24;
+    }
+    application junos-ms-rpc-wmic-admin2 {
+        term t1 protocol tcp uuid 29822ab8-f302-11d0-9953-00c04fd919c1;
+    }
+    application junos-ms-rpc-wmic-mgmt {
+        term t1 protocol tcp uuid 8bc3f05e-d86b-11d0-a075-00c04fb68820;
+    }
+    application junos-ms-rpc-iis-com-1 {
+        term t1 protocol tcp uuid a9e69612-b80d-11d0-b9b9-00a0c922e750;
+    }
+    application junos-ms-rpc-iis-com-adminbase {
+        term t1 protocol tcp uuid 70b51430-b6ca-11d0-b9b9-00a0c922e750;
+    }
+    #
+    # MS RPC any
+    #
+    application junos-ms-rpc-uuid-any-tcp {
+        term t1 protocol tcp uuid ffffffff-ffff-ffff-ffff-ffffffffffff;
+    }
+    application junos-ms-rpc-uuid-any-udp {
+        term t1 protocol udp uuid ffffffff-ffff-ffff-ffff-ffffffffffff;
+    }
+    #
+    #  Microsoft SQL
+    #
+    application junos-ms-sql {
+        term t1 protocol tcp destination-port 1433;
+    }
+    #
+    # NetBIOS Name Service 
+    #
+    application junos-nbname {
+        term t1 protocol udp destination-port 137;
+    }
+    #
+    # NetBIOS Datagram Service
+    #
+    application junos-nbds {
+        term t1 protocol udp destination-port 138;
+    }
+    #
+    # Network File System  protocol
+    #
+    application junos-nfs {
+        term t1 protocol udp destination-port 111;
+    }
+    #
+    # NS-Global (Management protocol for Juniper Networks Firewall/VPN devices)
+    #
+    application junos-ns-global {
+        term t1 protocol tcp destination-port 15397;
+    }
+    #
+    # NS-Global-PRO (Monitoring system for the Juniper Networks Firewall/VPN devices)
+    #
+    application junos-ns-global-pro {
+        term t1 protocol tcp destination-port 15397;
+    }
+    #
+    # NetScreen Security Manager
+    #
+    application junos-nsm {
+        term t1 protocol udp destination-port 69;
+    }
+    #
+    # OSPF protocol
+    #
+    application junos-ospf {
+        term t1 protocol 89;
+    }
+    #
+    # PC-anywhere remote control and file transfer protocol
+    #
+    application junos-pc-anywhere {
+        term t1 protocol udp destination-port 5632;
+    }
+    #
+    # Ping  protocol
+    #
+    application junos-ping {
+        term t1 protocol 1;
+    }
+    #
+    # Ping for IPv6
+    #
+    application junos-pingv6 {
+        term t1 protocol 58;
+    }
+    #
+    # ICMP6 destination unreachable address
+    #
+    application junos-icmp6-dst-unreach-addr {
+        term t1 protocol 58 icmp6-type 1 icmp6-code 3;
+    }
+    #
+    # ICMP6 destination unreachable administration
+    #
+    application junos-icmp6-dst-unreach-admin {
+        term t1 protocol 58 icmp6-type 1 icmp6-code 1;
+    }
+    #
+    # ICMP6 destination unreachable beyond 
+    #
+    application junos-icmp6-dst-unreach-beyond {
+        term t1 protocol 58 icmp6-type 1 icmp6-code 2;
+    }
+    #
+    # ICMP6 destination unreachable port
+    #
+    application junos-icmp6-dst-unreach-port {
+        term t1 protocol 58 icmp6-type 1 icmp6-code 4;
+    }
+    #
+    # ICMP6 destination unreachable route
+    #
+    application junos-icmp6-dst-unreach-route {
+        term t1 protocol 58 icmp6-type 1 icmp6-code 0;
+    }
+    #
+    # ICMP6 echo reply
+    #
+    application junos-icmp6-echo-reply {
+        term t1 protocol 58 icmp6-type 129;
+    }
+    #
+    # ICMP6 echo request
+    #
+    application junos-icmp6-echo-request {
+        term t1 protocol 58 icmp6-type 128;
+    }
+    #
+    # ICMP6 packet too big
+    #
+    application junos-icmp6-packet-too-big {
+        term t1 protocol 58 icmp6-type 2 icmp6-code 0;
+    }
+    #
+    # ICMP6 parameter problem header 
+    #
+    application junos-icmp6-param-prob-header {
+        term t1 protocol 58 icmp6-type 4 icmp6-code 0;
+    }
+    #
+    # ICMP6 parameter problem next header 
+    #
+    application junos-icmp6-param-prob-nexthdr {
+        term t1 protocol 58 icmp6-type 4 icmp6-code 1;
+    }
+    #
+    # ICMP6 parameter problem option
+    #
+    application junos-icmp6-param-prob-option {
+        term t1 protocol 58 icmp6-type 4 icmp6-code 2;
+    }
+    #
+    # ICMP6 time exceeded reassembly
+    #
+    application junos-icmp6-time-exceed-reassembly {
+        term t1 protocol 58 icmp6-type 3 icmp6-code 1;
+    }
+    #
+    # ICMP6 time exceeded transit
+    #
+    application junos-icmp6-time-exceed-transit {
+        term t1 protocol 58 icmp6-type 3 icmp6-code 0;
+    }
+    #
+    # ICMP6 all traffic
+    #   This can be made to be more restrictive by specifying icmp6
+    #   type and code.
+    #       
+    application junos-icmp6-all {
+        term t1 protocol 58;
+    }
+    #
+    # Point-to-Point Tunneling protocol
+    #
+    application junos-pptp {
+        term t1 alg pptp protocol tcp destination-port 1723;
+    }
+    #
+    # Real players use this protocol for real time streaming 
+    # This was the original protocol for real players. 
+    # RTSP is more widely used by real players 
+    # but they still support realaudio.
+    #
+    application junos-realaudio {
+        term t1 alg rtsp protocol tcp destination-port 554;
+    }
+    #
+    # Cisco Station Call Control Protocol
+    #
+    application junos-sccp {
+        term t1 alg sccp protocol tcp destination-port 2000;
+    }
+    application junos-sctp-any {
+        term t1 protocol 132;
+    }
+    #
+    # Session Initiation Protocol (SIP)
+    #
+    application junos-sip {
+        term t1 alg sip protocol udp destination-port 5060;
+        term t2 alg sip protocol tcp destination-port 5060;
+    }
+    #
+    # RSH 
+    #
+    application junos-rsh {
+        term t1 alg rsh protocol tcp destination-port 514;
+    }
+    #
+    # Server Message Block Protocol
+    #
+    application junos-smb {
+        term t1 protocol tcp destination-port 139;
+        term t2 protocol tcp destination-port 445;
+    }
+    application junos-sql-monitor {
+        term t1 protocol udp destination-port 1434;
+    }
+    #
+    # Oracle SQL*Net Version 1
+    #
+    application junos-sqlnet-v1 {
+        term t1 protocol tcp destination-port 1525;
+    }
+    #
+    # Oracle SQL*Net Version 2
+    #
+    application junos-sqlnet-v2 {
+        term t1 alg sqlnet-v2 protocol tcp destination-port 1521;
+    }
+    #
+    # Sun RPC
+    #
+    application junos-sun-rpc-tcp {
+        term t1 alg sun-rpc protocol tcp destination-port 111;
+    }
+    application junos-sun-rpc-udp {
+        term t1 alg sun-rpc protocol udp destination-port 111;
+    }
+    #
+    # Sun RPC Portmapper
+    #
+    application junos-sun-rpc-portmap-tcp {
+        term t1 protocol tcp rpc-program-number 100000;
+    }
+    application junos-sun-rpc-portmap-udp {
+        term t1 protocol udp rpc-program-number 100000;
+    }
+    #
+    # Sun RPC nfs
+    #
+    application junos-sun-rpc-nfs-tcp {
+        term t1 protocol tcp rpc-program-number 100003;
+    }
+    application junos-sun-rpc-nfs-udp {
+        term t1 protocol udp rpc-program-number 100003;
+    }
+    #
+    # Sun RPC mountd
+    #
+    application junos-sun-rpc-mountd-tcp {
+        term t1 protocol tcp rpc-program-number 100005;
+    }
+    application junos-sun-rpc-mountd-udp {
+        term t1 protocol udp rpc-program-number 100005;
+    }
+    #
+    # Sun RPC ypbind
+    #
+    application junos-sun-rpc-ypbind-tcp {
+        term t1 protocol tcp rpc-program-number 100007;
+    }
+    application junos-sun-rpc-ypbind-udp {
+        term t1 protocol udp rpc-program-number 100007;
+    }
+    #
+    # Sun RPC status
+    #
+    application junos-sun-rpc-status-tcp {
+        term t1 protocol tcp rpc-program-number 100024;
+    }
+    application junos-sun-rpc-status-udp {
+        term t1 protocol udp rpc-program-number 100024;
+    }
+    #
+    # Sun RPC ypserv
+    #
+    application junos-sun-rpc-ypserv-tcp {
+        term t1 protocol tcp rpc-program-number 100004;
+    }
+    application junos-sun-rpc-ypserv-udp {
+        term t1 protocol udp rpc-program-number 100004;
+    }
+    #
+    # Sun RPC Remote Quota Daemon
+    #
+    application junos-sun-rpc-rquotad-tcp {
+        term t1 protocol tcp rpc-program-number 100011;
+    }
+    application junos-sun-rpc-rquotad-udp {
+        term t1 protocol udp rpc-program-number 100011;
+    }
+    #
+    # Sun RPC Network Lock Manager
+    #
+    application junos-sun-rpc-nlockmgr-tcp {
+        term t1 protocol tcp rpc-program-number 100021;
+    }
+    application junos-sun-rpc-nlockmgr-udp {
+        term t1 protocol udp rpc-program-number 100021;
+    }
+    #
+    # Sun RPC Remote User Daemon
+    #
+    application junos-sun-rpc-ruserd-tcp {
+        term t1 protocol tcp rpc-program-number 100002;
+    }
+    application junos-sun-rpc-ruserd-udp {
+        term t1 protocol udp rpc-program-number 100002;
+    }
+    #
+    # Sun RPC System Administration Daemon
+    #
+    application junos-sun-rpc-sadmind-tcp {
+        term t1 protocol tcp rpc-program-number 100232;
+    }
+    application junos-sun-rpc-sadmind-udp {
+        term t1 protocol udp rpc-program-number 100232;
+    }
+    #
+    # Sun RPC SPRAY Daemon
+    #
+    application junos-sun-rpc-sprayd-tcp {
+        term t1 protocol tcp rpc-program-number 100012;
+    }
+    application junos-sun-rpc-sprayd-udp {
+        term t1 protocol udp rpc-program-number 100012;
+    }
+    #
+    # Sun RPC WALL Daemon
+    #
+    application junos-sun-rpc-walld-tcp {
+        term t1 protocol tcp rpc-program-number 100008;
+    }
+    application junos-sun-rpc-walld-udp {
+        term t1 protocol udp rpc-program-number 100008;
+    }
+    #
+    # SUN RPC any
+    #
+    application junos-sun-rpc-any-tcp {
+        term t1 protocol tcp rpc-program-number 1610612735;
+    }
+    application junos-sun-rpc-any-udp {
+        term t1 protocol udp rpc-program-number 1610612735;
+    }
+    # UNIX talk
+    application junos-talk {
+        term t1 alg talk protocol udp destination-port 517;
+        term t2 alg talk protocol tcp destination-port 517;
+    }
+    application junos-ntalk {
+        term t1 alg talk protocol udp destination-port 518;
+        term t2 alg talk protocol tcp destination-port 518;
+    }
+    #
+    # Radio-Router Control Protocol
+    #
+    application junos-r2cp {
+        term t1 protocol udp destination-port 28672;
+    }
+    #
+    # Any TCP application
+    #
+    application junos-tcp-any {
+        term t1 protocol tcp;
+    }
+    #
+    # Any UDP application
+    #
+    application junos-udp-any {
+        term t1 protocol udp;
+    }
+    #
+    # Unix to Unix Copy (UUCP) Protocol
+    #
+    application junos-uucp {
+        term t1 protocol udp destination-port 540;
+    }
+    #
+    # VDOLive video streaming technology
+    #
+    application junos-vdo-live {
+        term t1 protocol udp destination-port 7000-7010;
+    }
+    #
+    # Virtual Network Computing's protocol
+    #
+    application junos-vnc {
+        term t1 protocol tcp destination-port 5800;
+    }
+    #
+    # Wide Area Information Server
+    #
+    application junos-wais {
+        term t1 protocol tcp destination-port 210;
+    }
+    #
+    # Network Directory Service Protocol
+    #
+    application junos-whois {
+        term t1 protocol tcp destination-port 43;
+    }
+    #
+    # WinFrame protocol (allows users on non-windows machines to run windows applications)
+    #
+    application junos-winframe {
+        term t1 protocol tcp destination-port 1494;
+    }
+    #
+    # X-Windows         protocol
+    #
+    application junos-x-windows {
+        term t1 protocol tcp destination-port 6000-6063;
+    }
+    #
+    # Yahoo Messenger 
+    #
+    application junos-ymsg {
+        term t1 protocol tcp destination-port 5000-5010;
+        term t2 protocol tcp destination-port 5050;
+        term t3 protocol udp destination-port 5000-5010;
+        term t4 protocol udp destination-port 5050;
+    }
+    #
+    # WX Control Connection used by WX-PIM
+    #
+    application junos-wxcontrol {
+        term t1 protocol tcp destination-port 3578 inactivity-timeout 7560;
+    }
+    #
+    # SNMP AgentX Connection used by WX-ISM
+    #
+    application junos-snmp-agentx {
+        term t1 protocol tcp destination-port 705 inactivity-timeout 7560;
+    }
+    #
+    # Simple Traversal of User Datagram Protocol (UDP) Through 
+    # Network Address Translators (NATs)
+    #
+    application junos-stun {
+        term t1 protocol udp destination-port 3478-3479;
+        term t2 protocol tcp destination-port 3478-3479;
+    }
+    #
+    # Persistent NAT Service
+    #
+    application junos-persistent-nat {
+        term t1 protocol 255 source-port 65535 destination-port 65535;
+    }
+    # 
+    # 'junos-routing-inbound' represents routing protocols that may
+    # that may need access the trusted network from the untrusted
+    # network.
+    # 
+    # Set is intended for a UI to display routing involvement choices.
+    #
+    # NOTE:  It is not recommended you use the entire set directly in
+    #        a firewall rule and open up firewall to all of these 
+    #        applications.  Also, you should always specify the source
+    #        and destination prefixes when using each application.
+    #
+    # NOTE: the contents of this set may grow in future JUNOS versions.
+    # 
+    application-set junos-routing-inbound {
+        application junos-bgp;
+        application junos-rip;
+        application junos-ldp-tcp;
+        application junos-ldp-udp;
+    }
+    #
+    # Common Internet File System (cifs)
+    # It runs over netbios and over smb, so construct
+    # an application set to capture it.
+    #
+    application-set junos-cifs {
+        application junos-netbios-session;
+        application junos-smb-session;
+    }
+    application-set junos-mgcp {
+        application junos-mgcp-ua;
+        application junos-mgcp-ca;
+    }
+    application-set junos-ms-rpc {
+        application junos-ms-rpc-tcp;
+        application junos-ms-rpc-udp;
+    }
+    #
+    #  Microsoft RPC Microsoft Exchange
+    #
+    application-set junos-ms-rpc-msexchange {
+        application junos-ms-rpc-tcp;
+        application junos-ms-rpc-udp;
+        application junos-ms-rpc-epm;
+        application junos-ms-rpc-msexchange-directory-rfr;
+        application junos-ms-rpc-msexchange-info-store;
+        application junos-ms-rpc-msexchange-directory-nsp;
+    }
+    application-set junos-ms-rpc-wmic {
+        application junos-ms-rpc-tcp;
+        application junos-ms-rpc-wmic-admin;
+        application junos-ms-rpc-wmic-admin2;
+        application junos-ms-rpc-wmic-webm-level1login;
+        application junos-ms-rpc-wmic-mgmt;
+    }
+    application-set junos-ms-rpc-iis-com {
+        application junos-ms-rpc-tcp;
+        application junos-ms-rpc-iis-com-1;
+        application junos-ms-rpc-iis-com-adminbase;
+    }
+    application-set junos-ms-rpc-any {
+        application junos-ms-rpc-tcp;
+        application junos-ms-rpc-udp;
+        application junos-ms-rpc-uuid-any-tcp;
+        application junos-ms-rpc-uuid-any-udp;
+    }
+    application-set junos-sun-rpc {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+    }
+    application-set junos-sun-rpc-portmap {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+    }
+    application-set junos-sun-rpc-nfs {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-nfs-tcp;
+        application junos-sun-rpc-nfs-udp;
+    }
+    application-set junos-sun-rpc-mountd {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-mountd-tcp;
+        application junos-sun-rpc-mountd-udp;
+    }
+    application-set junos-sun-rpc-ypbind {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-ypbind-tcp;
+        application junos-sun-rpc-ypbind-udp;
+    }
+    application-set junos-sun-rpc-status {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-status-tcp;
+        application junos-sun-rpc-status-udp;
+    }
+    #
+    # Sun RPC nfs-access (Requires nfs and mountd)
+    #
+    application-set junos-sun-rpc-nfs-access {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-nfs-tcp;
+        application junos-sun-rpc-nfs-udp;
+        application junos-sun-rpc-mountd-tcp;
+        application junos-sun-rpc-mountd-udp;
+    }
+    application-set junos-sun-rpc-ypserv {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-ypserv-tcp;
+        application junos-sun-rpc-ypserv-udp;
+    }
+    application-set junos-sun-rpc-rquotad {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-rquotad-tcp;
+        application junos-sun-rpc-rquotad-udp;
+    }
+    application-set junos-sun-rpc-nlockmgr {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-nlockmgr-tcp;
+        application junos-sun-rpc-nlockmgr-udp;
+    }
+    application-set junos-sun-rpc-ruserd {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-ruserd-tcp;
+        application junos-sun-rpc-ruserd-udp;
+    }
+    application-set junos-sun-rpc-sadmind {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-sadmind-tcp;
+        application junos-sun-rpc-sadmind-udp;
+    }
+    application-set junos-sun-rpc-sprayd {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-sprayd-tcp;
+        application junos-sun-rpc-sprayd-udp;
+    }
+    application-set junos-sun-rpc-walld {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-portmap-tcp;
+        application junos-sun-rpc-portmap-udp;
+        application junos-sun-rpc-walld-tcp;
+        application junos-sun-rpc-walld-udp;
+    }
+    application-set junos-sun-rpc-any {
+        application junos-sun-rpc-tcp;
+        application junos-sun-rpc-udp;
+        application junos-sun-rpc-any-tcp;
+        application junos-sun-rpc-any-udp;
+    }
+}
