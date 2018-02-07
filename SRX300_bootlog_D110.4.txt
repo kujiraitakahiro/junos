@@ -1,0 +1,268 @@
+*** FINAL System shutdown message from root@SRX-3_node0 ***
+
+System going down IMMEDIATELY
+
+
+FFWaiting (max 60 seconds) for system process `vnlru' to stop...done
+Waiting (max 60 seconds) for system process `vnlru_mem' to stop...done
+Waiting (max 60 seconds) for system process `bufdaemon' to stop...done
+Waiting (max 60 seconds) for system process `syncer' to stop...
+Syncing disks, vnodes remaining...0 0 0 0 done
+
+syncing disks... Syncing disks, buffers remaining... 9 9 9 9 9 9 9 2 2 2 2 2 2 2 1 1 1 1 1 1 1
+Final sync complete
+Uptime: 1h2m3s
+Rebooting...
+cpu_reset: Stopping other CPUs
+
+
+SPI stage 1 bootloader (Build time: May  3 2016 - 23:48:30)
+early_board_init: Board type: SRX_300
+
+U-Boot 2013.07-JNPR-3.1 (Build time: May 03 2016 - 23:48:31)
+
+SRX_300 board revision major:1, minor:8, serial #: CV3316AF1119
+OCTEON CN7020-AAP pass 1.2, Core clock: 1200 MHz, IO clock: 600 MHz, DDR clock: 667 MHz (1334 Mhz DDR)
+Base DRAM address used by u-boot: 0x10fc00000, size: 0x400000
+DRAM: 4 GiB
+Clearing DRAM...... done
+Using default environment
+
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+Found valid SPI bootloader at offset: 0x90000, size: 1481840 bytes
+
+
+U-Boot 2013.07-JNPR-3.1 (Build time: May 03 2016 - 23:50:19)
+
+Using DRAM size from environment: 4096 MBytes
+checkboard siege
+SATA0: not available
+SATA1: not available
+SATA BIST STATUS = 0x0
+SRX_300 board revision major:1, minor:8, serial #: CV3316AF1119
+OCTEON CN7020-AAP pass 1.2, Core clock: 1200 MHz, IO clock: 600 MHz, DDR clock: 667 MHz (1334 Mhz DDR)
+Base DRAM address used by u-boot: 0x10f000000, size: 0x1000000
+DRAM: 4 GiB
+Clearing DRAM...... done
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+PCIe: Port 0 link active, 1 lanes, speed gen2
+PCIe: Link timeout on port 1, probably the slot is empty
+PCIe: Port 2 not in PCIe mode, skipping
+Net:   octeth0
+Interface 0 has 1 ports (SGMII)
+Type the command 'usb start' to scan for USB storage devices.
+
+Boot Media: eUSB usb
+Found TPM SLB9660 TT 1.2 by Infineon
+TPM initialized
+Hit any key to stop autoboot:  0
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+SF: 1048576 bytes @ 0x200000 Read: OK
+## Starting application at 0x8f0000a0 ...
+Consoles: U-Boot console
+Found compatible API, ver. 3.1
+USB1:
+Starting the controller
+USB XHCI 1.00
+scanning bus 1 for devices... 2 USB Device(s) found
+USB0:
+Starting the controller
+USB XHCI 1.00
+scanning bus 0 for devices... 1 USB Device(s) found
+       scanning usb for storage devices... 1 Storage Device(s) found
+
+FreeBSD/MIPS U-Boot bootstrap loader, Revision 2.8
+(slt-builder@svl-ssd-build-vm06.juniper.net, Tue Feb 10 00:32:30 PST 2015)
+Memory: 4096MB
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+[0]Booting from eUSB slice 2
+Loading /boot/defaults/loader.conf
+/kernel data=0xb9e2a4+0x152aac syms=[0x4+0xa0630+0x4+0xf0175]
+
+
+Hit [Enter] to boot immediately, or space bar for command prompt.
+Booting [/kernel]...
+Kernel entry at 0x801000c0 ...
+init regular console
+Primary ICache: Sets 16 Size 128 Asso 39
+Primary DCache: Sets 8 Size 128 Asso 32
+Secondary DCache: Sets 1024 Size 128 Asso 4
+CIU_FUSE 0x3/0x3
+GDB: debug ports: uart
+GDB: current port: uart
+KDB: debugger backends: ddb gdb
+KDB: current backend: ddb
+kld_map_v: 0x8ff80000, kld_map_p: 0x0
+Running in PARTITIONED TLB MODE
+Copyright (c) 1996-2017, Juniper Networks, Inc.
+All rights reserved.
+Copyright (c) 1992-2007 The FreeBSD Project.
+Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
+	The Regents of the University of California. All rights reserved.
+FreeBSD is a registered trademark of The FreeBSD Foundation.
+JUNOS 15.1X49-D110.4 #0: 2017-09-08 03:18:32 UTC
+    builder@mayland.juniper.net:/volume/build/junos/15.1/service/15.1X49-D110.4/obj/octeon/junos/bsd/kernels/JSRXNLE/kernel
+can't re-use a leaf (debug)!
+JUNOS 15.1X49-D110.4 #0: 2017-09-08 03:18:32 UTC
+    builder@mayland.juniper.net:/volume/build/junos/15.1/service/15.1X49-D110.4/obj/octeon/junos/bsd/kernels/JSRXNLE/kernel
+real memory  = 4294967296 (4194304K bytes)
+avail memory = 2621882368 (2500MB)
+FreeBSD/SMP: Multiprocessor System Detected: 2 CPUs
+Security policy loaded: JUNOS MAC/runasnonroot (mac_runasnonroot)
+Security policy loaded: Junos MAC/veriexec (mac_veriexec)
+Security policy loaded: JUNOS MAC/pcap (mac_pcap)
+MAC/veriexec fingerprint module loaded: SHA1
+MAC/veriexec fingerprint module loaded: SHA256
+netisr_init: !debug_mpsafenet, forcing maxthreads from 2 to 1
+cpu0 on motherboard
+: CAVIUM's OCTEON 70XX/71XX CPU Rev. 0.2 with no FPU implemented
+        L1 Cache: I size 78kb(128 line), D size 32kb(128 line), thirty two way.
+        L2 Cache: Size 512kb, 4 way
+obio0 on motherboard
+uart0: <Octeon-16550 channel 0> on obio0
+uart0: console (9600,n,8,1)
+twsi0 on obio0
+set clock 0x31
+xhci0: <Cavium Octeon 7xxx xHCI Host Driver> on obio0
+usb0: <USB bus for xHCI Controller> on xhci0
+usb0: USB revision 3.0
+uhub0: vendor 0x0000 XHCI root hub, class 9/0, rev 3.00/1.00, addr 1
+uhub0: 2 ports with 2 removable, self powered
+xhci1: <Cavium Octeon 7xxx xHCI Host Driver> on obio0
+usb1: <USB bus for xHCI Controller> on xhci1
+usb1: USB revision 3.0
+uhub1: vendor 0x0000 XHCI root hub, class 9/0, rev 3.00/1.00, addr 1
+uhub1: 2 ports with 2 removable, self powered
+cpld0 on obio0
+pcib0: <Cavium on-chip PCIe HOST bridge> on obio0
+Disabling Octeon big bar support
+pcib0: Initialized controller
+pci0: <PCI bus> on pcib0
+pci0: <network, ethernet> at device 0.0 (no driver attached)
+pci0: <network, ethernet> at device 0.1 (no driver attached)
+gblmem0 on obio0
+octpkt0: <Octeon RGMII> on obio0
+cfi0: <Macronix MX25L64 - 8MB> on obio0
+cfi1: <Macronix MX25L64 - 8MB> on obio0
+umass0: ATP Electronics ATP CG eUSB, rev 2.00/11.00, addr 2
+Timecounter "mips" frequency 1200000000 Hz quality 0
+Registered AMT tunnel Encap with UDP Tunnel!
+ Loading Redundant LT driver
+###PCB Group initialized for udppcbgroup
+###PCB Group initialized for tcppcbgroup
+da0 at umass-sim0 bus 0 target 0 lun 0
+da0: <ATP ATP CG eUSB 1100> Fixed Direct Access SCSI-4 device
+da0: 40.000MB/s transfers
+da0: 7672MB (15712256 512 byte sectors: 255H 63S/T 978C)
+Kernel thread "wkupdaemon" (pid 51) exited prematurely.
+Trying to mount root from ufs:/dev/da0s2a
+MFSINIT: Initialising MFSROOT
+Process-1 beginning MFSROOT initialization...
+Creating MFSROOT...
+/dev/md0: 20.0MB (40956 sectors) block size 16384, fragment size 2048
+	using 4 cylinder groups of 5.00MB, 320 blks, 640 inodes.
+super-block backups (for fsck -b #) at:
+ 32, 10272, 20512, 30752
+Populating MFSROOT...
+Creating symlinks...
+Setting up mounts...
+Continuing boot from MFSROOT...
+Attaching /cf/packages/junos via /dev/mdctl...
+Mounted junos package on /dev/md1...
+F
+Automatic reboot in progress...
+Verified jboot signed by PackageProductionEc_2017 method ECDSA256+SHA256
+Verified junos signed by PackageProductionEc_2017 method ECDSA256+SHA256
+Verified junos-15.1X49-D110.4-domestic signed by PackageProductionEc_2017 method ECDSA256+SHA256
+Checking integrity of BSD labels:
+  s1: Passed
+  s2: Passed
+  s3: Passed
+  s4: Passed
+** /dev/bo0s3e
+FILE SYSTEM CLEAN; SKIPPING CHECKS
+clean, 94765 free (29 frags, 11842 blocks, 0.0% fragmentation)
+** /dev/bo0s3f
+FILE SYSTEM CLEAN; SKIPPING CHECKS
+clean, 952638 free (262 frags, 119047 blocks, 0.0% fragmentation)
+Checking integrity of licenses:
+Checking integrity of configuration:
+  rescue.conf.gz: Passed
+
+LPC bus driver
+lpcbus0 on cpld0
+tpm0: <Trusted Platform Module> on lpcbus0
+tpm: IFX SLB 9660 TT 1.2 rev 0x10
+Loading configuration ...
+hw.re.gres_sync_other: 0 -> 1
+/config/juniper.conf:69:(24) fpc value outside range 0..0 for '1/0/2' in 'ge-1/0/2' at 'ge-1/0/2'
+  [edit chassis cluster redundancy-group 1 interface-monitor]
+    'ge-1/0/2 weight 255;'
+      fpc value outside range 0..0 for '1/0/2' in 'ge-1/0/2'
+/config/juniper.conf:71:(24) fpc value outside range 0..0 for '1/0/3' in 'ge-1/0/3' at 'ge-1/0/3'
+  [edit chassis cluster redundancy-group 1 interface-monitor]
+    'ge-1/0/3 weight 255;'
+      fpc value outside range 0..0 for '1/0/3' in 'ge-1/0/3'
+/config/juniper.conf:159:(12) fpc value outside range 0..0 for '1/0/2' in 'ge-1/0/2' at 'ge-1/0/2'
+  [edit interfaces]
+    'ge-1/0/2 {'
+      fpc value outside range 0..0 for '1/0/2' in 'ge-1/0/2'
+/config/juniper.conf:163:(5) error recovery ignores input until this point at '}'
+  [edit interfaces]
+    '}'
+      error recovery ignores input until this point
+/config/juniper.conf:164:(12) fpc value outside range 0..0 for '1/0/3' in 'ge-1/0/3' at 'ge-1/0/3'
+  [edit interfaces]
+    'ge-1/0/3 {'
+      fpc value outside range 0..0 for '1/0/3' in 'ge-1/0/3'
+/config/juniper.conf:168:(5) error recovery ignores input until this point at '}'
+  [edit interfaces]
+    '}'
+      error recovery ignores input until this point
+/config/juniper.conf:179:(24) fpc value outside range 0..0 for '1/0/5' in 'ge-1/0/5' at 'ge-1/0/5'
+  [edit interfaces fab1 fabric-options member-interfaces]
+    'ge-1/0/5;'
+      fpc value outside range 0..0 for '1/0/5' in 'ge-1/0/5'
+warning: statement must contain additional statements
+mgd: Running FIPS Self-tests
+veriexec: no fingerprint for file='/sbin/kats/cannot-exec' fsid=76 fileid=2472140 gen=1 uid=0 pid=937
+mgd: Time and ticks drifted too much, resetting synchronization...
+mgd: commit complete
+Setting initial options: .
+Starting optional daemons:  usbd.
+Doing initial network setup:
+.
+Initial interface configuration:
+additional daemons: eventd.
+hw.re.gres_sync_other: 1 -> 0
+Additional routing options:kern.module_path: /boot//kernel;/boot/modules -> /boot/modules;/modules/ifpfe_drv;cryptosoft0: <software crypto> on motherboard
+IPsec: Initialized Security Association Processing.
+/modules;
+kad: can't load kats.ko: File exists
+.
+Doing additional network setup:.
+Starting final network daemons:.
+setting ldconfig path: /usr/lib /opt/lib
+starting standard daemons: cron.
+Initial rc.mips initialization:.
+Local package initialization:.
+starting local daemons:set cores for group access
+.
+kern.securelevel: -1 -> 1
+Creating JAIL MFS partition...
+JAIL MFS partition created
+Boot media /dev/da0 has dual root support
+** /dev/da0s1a
+FILE SYSTEM CLEAN; SKIPPING CHECKS
+clean, 1135924 free (92 frags, 141979 blocks, 0.0% fragmentation)
+ chassis.ko loaded Loading JUNOS chassis module
+chassis_init_hw_chassis_startup_time: chassis startup time 0.000000
+Wed Feb  7 17:24:16 UTC 2018
+
+Amnesiac (ttyu0)
+
+login: root
+Password:
+
+--- JUNOS 15.1X49-D110.4 built 2017-09-08 03:18:32 UTC
+root@% cli
