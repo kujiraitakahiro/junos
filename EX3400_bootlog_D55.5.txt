@@ -1,0 +1,345 @@
+U-Boot 2016.01-rc1 (May 23 2016 - 08:45:58 -0700) VERSION=1.2.0
+
+DRAM:  AVS: 0x0
+DEV ID = 0xdc14
+SKU ID = 0xb548
+DDR type: DDR3
+MEMC 0 DDR speed = 750MHz
+PHY revision version: 0x00044006
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+In:    serial
+Out:   serial
+Err:   serial
+FLASH bank: 1
+Board: EX3400-24T
+Base MAC: 30B64FC62C5B
+Net:   bcmiproc_eth-0
+Last Reset Reason: 8
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB, mapped at dff8f020
+Erasing SPI flash...Writing to SPI flash...done
+Erasing SPI flash...Writing to SPI flash...done
+Hit ^C to stop autoboot:  0
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+device 0 offset 0x3c0000, size 0x10000
+SF: 65536 bytes @ 0x3c0000 Read: OK
+
+## Checking Image at 61000000 ...
+   Legacy image found
+   Image Name:   Juniper U-Boot Script File
+   Image Type:   ARM Unknown OS Script (uncompressed)
+   Data Size:    1803 Bytes = 1.8 KiB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Contents:
+      Image 0: 1795 Bytes = 1.8 KiB
+   Verifying Checksum ... OK
+## Executing script at 61000000
+Setting bus to 0
+Saving Environment to SPI Flash...
+Erasing SPI flash...Writing to SPI flash...done
+Erasing SPI flash...Writing to SPI flash...done
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB, mapped at 00000a30
+device 0 offset 0x140000, size 0x140000
+SF: 1310720 bytes @ 0x140000 Read: OK
+6113fffc: f1c1fb43                               C...
+crc32 for 61000000 ... 6113ffff ==> 43fbc1f1
+Total of 1 word(s) were the same
+starting USB...
+USB0:   phy ctrl 01d36440
+Initial usb2h clock is: 000003fc
+Main Menu
+
+1.  Boot [J]unos volume
+2.  Boot Junos volume in [S]afe mode
+
+3.  [R]eboot
+
+4.  [B]oot menu
+5.  [M]ore options
+
+
+
+
+
+
+Choice:
+Booting from Junos volume ...
+|
+/packages/sets/active/boot/os-kernel/kernel data=0xd20000 syms=[0x4+0x4dee0+0x4+0x6eb0d]
+/packages/sets/active/boot/os-kernel/ex3400.dtb size=0x1ee9
+/packages/sets/active/boot/junos-modules/fips_core.ko text=0x1074 data=0x247 syms=[0x4+0x600+0x4+0x40f]
+loading required module 'netstack'
+/packages/sets/active/boot/netstack/netstack.ko text=0x768600 data=0x1fc41+0xb3bb7 syms=[0x4+0xa8d20+0x4+0x8042c]
+loading required module 'crypto'
+/packages/sets/active/boot/os-crypto/crypto.ko text=0x21fb0 data=0x91f+0x2f5 syms=[0x4+0x30a0+0x4+0x1971]
+/packages/sets/active/boot/junos-modules/mac_fips.ko text=0x6a8 data=0x691 syms=[0x4+0x4f0+0x4+0x479]
+/packages/sets/active/boot/junos-modules/mac_sdk.ko text=0x1b24 data=0x693+0x15 syms=[0x4+0xa40+0x4+0x6e2]
+/packages/sets/active/boot/junos-modules/sdk_core.ko text=0xa358 data=0x641+0x13b syms=[0x4+0x1d30+0x4+0x158a]
+/packages/sets/active/boot/junos-modules/junosprocfs.ko text=0xe74 data=0x35b syms=[0x4+0x820+0x4+0x695]
+/packages/sets/active/boot/os-kernel/miibus.ko text=0x190f0 data=0x1124+0x78 syms=[0x4+0x48e0+0x4+0x2f37]
+/packages/sets/active/boot/os-kernel/if_gmac.ko text=0x1144c data=0xaea+0x5a syms=[0x4+0x22b0+0x4+0x1861]
+/packages/sets/active/boot/netstack/dcp_re.ko text=0x218f4 data=0x7245+0xcff syms=[0x4+0x54e0+0x4+0x60c5]
+loading required module 'pvi_db'
+/packages/sets/active/boot/netstack/pvi_db.ko text=0x2718 data=0x3ac+0x4c syms=[0x4+0x840+0x4+0x534]
+/packages/sets/active/boot/netstack/poe.ko text=0x1da0 data=0x39f+0x31 syms=[0x4+0x7f0+0x4+0x514]
+/packages/sets/active/boot/os-kernel/contents.izo size=0x79b400
+Hit [Enter] to boot immediately, or any other key for command prompt.
+Booting [/packages/sets/active/boot/os-kernel/kernel]...
+Using DTB from loaded file '/packages/sets/active/boot/os-kernel/ex3400.dtb'.
+Kernel entry at 0x61000100...
+Kernel args: (null)
+GDB: debug ports: uart
+GDB: current port: uart
+KDB: debugger backends: ddb gdb ndb
+KDB: current backend: ddb
+Copyright (c) 1992-2015 The FreeBSD Project.
+Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
+	The Regents of the University of California. All rights reserved.
+FreeBSD is a registered trademark of The FreeBSD Foundation.
+FreeBSD JNPR-11.0-20161226.342161_builder_head #0 r342161: Mon Dec 26 01:21:37 PST 2016
+    builder@feyrith.juniper.net:/volume/build/junos/occam/freebsd/head/20161226.builder.342161/obj/arm/juniper/kernels/JNPR-ARM-PRD/kernel arm
+Juniper clang version 3.5.0 (tags/RELEASE_350/final)
+CPU: Cortex A9-r3 rev 0 (Cortex-A core)
+ Supported features: ARM_ISA THUMB2 JAZELLE THUMBEE ARMv4 Security_Ext
+ WB disabled EABT branch prediction enabled
+LoUU:2 LoC:2 LoUIS:2
+Cache level 1:
+ 32KB/32B 4-way data cache WB Read-Alloc Write-Alloc
+ 32KB/32B 4-way instruction cache Read-Alloc
+real memory  = 2147483648 (2048 MB)
+avail memory = 2002575360 (1909 MB)
+FreeBSD/SMP: Multiprocessor System Detected: 2 CPUs
+Security policy loaded: Junos MAC/SDK (mac_sdk)
+Security policy loaded: JUNOS MAC/privcheck (mac_privcheck)
+Security policy loaded: MAC/veriexec (mac_veriexec)
+Security policy loaded: Junos MAC/fips (mac_fips)
+MAC/veriexec fingerprint module loaded: SHA1
+MAC/veriexec fingerprint module loaded: SHA256
+netisr_init: !debug_mpsafenet, forcing maxthreads from 2 to 1
+random: entropy device external interface
+Initializing DCF  platform properties ..
+rts_sysconf_ifstate_init: registerd rtcb osd: slotid 2
+Calling dcf_ng_hw_init for platform hw vecs initialization
+ofwbus0: <Open Firmware Device Tree>
+simplebus0: <Flattened device tree simple bus> on ofwbus0
+mpcore0: <ARM Cortex-A9 MPCore> on simplebus0
+bcmidm0: <Broadcom Interconnect Device Management (IDM)> mem 0x100000-0x1fffff on simplebus0
+ihost_proc0: <Broadcom iHost PLL> mem 0x1000000-0x1000fff on simplebus0
+l2cache0: <PL310 L2 cache controller> mem 0x1022000-0x1022fff irq 32 on mpcore0
+l2cache0: Part number: 0x3, release: 0x8 (r3p2)
+l2cache0: Warning: L2 Cache should not already be active; trying to de-activate and re-initialize...
+l2cache0: L2 Cache enabled: 512KB/32B 16 ways
+gic0: <ARM Generic Interrupt Controller> mem 0x1021000-0x1021fff,0x1020100-0x10201ff on mpcore0
+gic0: pn 0x390, arch 0x1, rev 0x2, implementer 0x43b irqs 256
+mp_tmr0: <ARM MPCore Timers> mem 0x1020200-0x10202ff,0x1020600-0x102061f irq 27,29 on mpcore0
+Timecounter "MPCore" frequency 500000005 Hz quality 800
+Event timer "MPCore" frequency 500000005 Hz quality 1000
+cmic0: <Broadcom CMIC> mem 0x48000000-0x4803ffff irq 194 on ofwbus0
+cmic0: called :bcm_cmic_attach,Dev Chip Id is 0x1b548:
+bcmdmu0: <Broadcom BCM56XXX dmu> mem 0x3f000-0x3ffff on simplebus0
+bcmmdio0: <Broadcom BCM56XXX MDIO> mem 0x32000-0x32fff irq 125 on simplebus0
+bcmmdio0: MDIO bus running at freq: 2MHz
+gmac0: <Broadcom-56340 GMAC> mem 0x22000-0x22fff irq 234 on simplebus0
+bcmidm0:  chip dev id :0x1b548
+miibus0: <MII bus> on gmac0
+brgphy0: <BCM54616S 10/100/1000baseTX PHY> PHY 1 on miibus0
+brgphy0:  10baseT, 10baseT-FDX, 100baseTX, 100baseTX-FDX, 1000baseT, 1000baseT-master, 1000baseT-FDX, 1000baseT-FDX-master, auto
+ehci0: <BCMIPROC-USB-EHCI> mem 0x2a000-0x2bfff irq 117 on simplebus0
+ehci0: called :bcmusb_ehci_attach,Dev Chip Id is 0x1b548:
+usbus0: EHCI version 1.0
+usbus0 on ehci0
+gpio0: <Broadcom BCM56XXX GPIO controller> mem 0x60-0x15f irq 125 on simplebus0
+gpiobus0: <GPIO bus> on gpio0
+gpioc0: <GPIO controller> on gpio0
+uart0: <16750 or compatible> mem 0x300-0x3ff irq 123 on simplebus0
+uart0: console (9600,n,8,1)
+uart0: [GIANT-LOCKED]
+uart1: <16750 or compatible> mem 0x400-0x4ff irq 123 on simplebus0
+uart1: [GIANT-LOCKED]
+iichb0: <Broadcom iProc SMBus Controller> mem 0x38000-0x38fff irq 127 on simplebus0
+iicbus0: <OFW I2C bus> on iichb0
+iic0: <I2C generic I/O> on iicbus0
+cpld0: <Juniper CPLD for iProc> at addr 0x31 on iicbus0
+cpldbus0: <CPLD Functions> on cpld0
+wdog0: <CPLD Watchdog Timer for iProc> on cpldbus0
+oamctl0: <OAM Control using CPLD for iProc> on cpldbus0
+fan0: <CPLD fan controller> on cpldbus0
+fan1: <CPLD fan controller> on cpldbus0
+resetctrl0: <I2C switch reset driver> on cpldbus0
+iichb1: <Broadcom iProc SMBus Controller> mem 0x3b000-0x3bfff irq 128 on simplebus0
+iicbus1: <OFW I2C bus> on iichb1
+iic1: <I2C generic I/O> on iicbus1
+iicswitch0: <I2C Switch/Multiplexer> at addr 0x70 on iicbus1
+poe0: <POE> on iicswitch0
+poe reset failed
+rtc8564je_rtc0: <EPSON 8564JE Real Time Clock(RTC)> on iicswitch0
+bcmcru0: <Broadcom BCM56XXX cru> mem 0x3e000-0x3efff on simplebus0
+spi0: <Broadcom BCM56XXX SPI> mem 0x27000-0x27fff irq 102 on simplebus0
+spibus0: <OFW SPI bus> on spi0
+mx25l0: <M25Pxx Flash Family> at cs 0 on spibus0
+mx25l0: mx25ll64, sector 65536 bytes, 128 sectors
+cryptosoft0: <software crypto>
+Initializing product: 169 ..
+md0: Preloaded image </packages/sets/active/boot/os-kernel/contents.izo> 7975936 bytes at 0xc2858e7c
+usbus0: 480Mbps High Speed USB v2.0
+JUNOS procfs is initialized.
+Timecounters tick every 10.000 msec
+ Loading Redundant LT driver
+Registered AMT tunnel Encap with UDP Tunnel!
+###PCB Group initialized for udppcbgroup
+###PCB Group initialized for tcppcbgroup
+rts_init: registered inrtsock osd: slotid 3
+ugen0.1: <Broadcom> at usbus0
+uhub0: <Broadcom EHCI root HUB, class 9/0, rev 2.00/1.00, addr 1> on usbus0
+Release APs
+Kernel thread "wkupdaemon" (pid 25) exited prematurely.
+Root mount waiting for: usbus0
+uhub0: 2 ports with 2 removable, self powered
+Root mount waiting for: usbus0
+ugen0.2: <vendor 0x05e3> at usbus0
+uhub1: <vendor 0x05e3 USB2.0 Hub, class 9/0, rev 2.00/85.37, addr 2> on usbus0
+Root mount waiting for: usbus0
+uhub1: 4 ports with 3 removable, self powered
+Root mount waiting for: usbus0
+Root mount waiting for: usbus0
+ugen0.3: <vendor 0x13fe> at usbus0
+umass0: <vendor 0x13fe USB DISK 2.0, class 0/0, rev 2.00/1.00, addr 3> on usbus0
+umass0:  SCSI over Bulk-Only; quirks = 0x8100
+umass0:0:0: Attached to scbus0
+Trying to mount root from cd9660:/dev/md0.uzip []...
+da0 at umass-sim0 bus 0 scbus0 target 0 lun 0
+da0: < USB DISK 2.0 PMAP> Removable Direct Access SPC-4 SCSI device
+da0: Serial Number 6500687092E4EC41
+da0: 40.000MB/s transfers
+da0: 1910MB (3911680 512 byte sectors: 255H 63S/T 243C)
+da0: quirks=0x3<NO_SYNC_CACHE,NO_6_BYTE>
+** /dev/gpt/junos
+** Last Mounted on /.mount
+** Phase 1 - Check Blocks and Sizes
+** Phase 2 - Check Pathnames
+** Phase 3 - Check Connectivity
+** Phase 4 - Check Reference Counts
+** Phase 5 - Check Cyl groups
+4341 files, 184932 used, 164632 free (184 frags, 20556 blocks, 0.1% fragmentation)
+
+***** FILE SYSTEM IS CLEAN *****
+@ 981071642 [2001-02-01 23:54:02] preboot
+Initializing Verified Exec:
+Verified os-kernel-prd-arm-32-20161226 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Enforcing Verified Exec:
+Verified os-libs-11-arm-32-20161226 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting os-libs-11-arm-32-20161226.342161_builder_head
+Verified os-runtime-arm-32-20161226 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting os-runtime-arm-32-20161226.342161_builder_head
+swapon: /dev/gpt/swap: No such file or directory
+@ 981071651 [2001-02-01 23:54:11 UTC] mount start
+Verified os-zoneinfo-arm-32-20161226 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting os-zoneinfo-arm-32-20161226.342161_builder_head
+Verified py-extensions-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting py-extensions-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified py-base-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting py-base-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified os-crypto-arm-32-20161226 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting os-crypto-arm-32-20161226.342161_builder_head
+Verified junos-net-prd-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-net-prd-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-libs-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-libs-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-runtime-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-runtime-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified jweb-ex-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting jweb-ex-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified jail-runtime-arm-32-20161226 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Verified jweb-ex-app-x86-32-15 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting jweb-ex-app-x86-32-15.1X53-A1
+Mounting jweb-ex-app..
+Successfully installed jweb-ex-app.
+Verified junos-libs-ex-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-libs-ex-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-runtime-ex-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-runtime-ex-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-platform-ex-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-platform-ex-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-modules-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-modules-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-modules-ex-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-modules-ex-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-dp-crypto-support-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-dp-crypto-support-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-dp-crypto-support-mtx-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-dp-crypto-support-mtx-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified junos-daemons-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting junos-daemons-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified jpfe-EX34XX-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting jpfe-EX34XX-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified jdocs-ex-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting jdocs-ex-arm-32-20161230.114620_builder_junos_151_x53_d55
+Verified fips-mode-arm-32-20161230 signed by PackageProductionEc_2016 method ECDSA256+SHA256
+Mounting fips-mode-arm-32-20161230.114620_builder_junos_151_x53_d55
+@ 981071692 [2001-02-01 23:54:52 UTC] mount done
+random: unblocking device.
+Checking platform support for: pvi-model
+kenv: unable to get boot_recover_volume
+No suitable dump device was found.
+kern.module_path: /packages/sets/active/boot/os-kernel;/packages/sets/active/boot/os-crypto;/packages/sets/active/boot/netstack;/packages/sets/active/boot/junos-modules -> /modules;/modules/ifpfe_drv;/modules/peertype;/modules/platform
+WARNING: attempt to domain_add(EIO) after domainfinalize()
+IPsec: Initialized Security Association Processing.
+IMPLEMENT ME: dtrace_toxic_ranges
+link_elf: symbol in_cksum undefined
+kldload: can't load nfsd.ko: No such file or directory
+can't re-use a leaf (fxseries_simulation)!
+Calling dcf_ng_hw_init for platform hw vecs initialization
+Loading the CHMIC module
+Loading the DC Platform NETPFE module
+loader.name="FreeBSD/armv6 U-Boot loader"
+loader.version="1.2"
+FreeBSD/armv6 U-Boot loader
+1.2
+889+0 records in
+889+0 records out
+462280 bytes transferred in 0.029068 secs (15903640 bytes/sec)
+@ 981071708 [2001-02-01 23:55:08 UTC] mgd start
+Creating initial configuration:  ...
+mgd: Running FIPS Self-tests
+veriexec: no signatures for device. file='/sbin/kats/cannot-exec' fsid=138 fileid=51404 gen=1 uid=0 pid=2512
+mgd: FIPS Self-tests Passed
+mgd: commit complete
+@ 981071727 [2001-02-01 23:55:27 UTC] mgd done
+
+ Lock Manager
+RDM Embedded 7 [04-Aug-2006] http://www.birdstep.com
+Copyright (c) 1992-2006 Birdstep Technology, Inc.  All Rights Reserved.
+
+Unix Domain sockets Lock manager
+Lock manager 'lockmgr' started successfully.
+
+Database Initialization Utility
+RDM Embedded 7 [04-Aug-2006] http://www.birdstep.com
+Copyright (c) 1992-2006 Birdstep Technology, Inc.  All Rights Reserved.
+
+/var/pdb/profile_db initialized
+
+Profile database initialized
+realpath: /dev/dumpdev: No such file or directory
+/etc/rc: WARNING: Dump device does not exist.  Savecore not run.
+@ 981071771 [2001-02-01 23:56:11 UTC] mountlate start
+Mounting jweb-ex-app-x86-32-15.1X53-A1
+Mounting jweb-ex-app..
+Successfully installed jweb-ex-app.
+@ 981071774 [2001-02-01 23:56:14 UTC] mountlate done
+Starting casperd.
+Starting jlaunchhelperd.
+/etc/rc: WARNING: run_rc_command: cannot run
+kern.rtc_retries: 0 -> 5
+Starting cron.
+
+Thu Feb  1 23:56:25 UTC 2001
+
+FreeBSD/arm (Fukuoka-2) (ttyu0)
+
+login: root
+Password:
+Last login: Fri Dec  8 23:49:59 on ttyu0
+
+--- JUNOS 15.1X53-D55.5 Kernel 32-bit  JNPR-11.0-20161226.342161_build
+root@Fukuoka-2:RE:0%
