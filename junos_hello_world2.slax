@@ -1,0 +1,17 @@
+/* hello-world.slax */
+version 1.0;
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0"; import "../import/junos.xsl";
+
+/* This is a Global Variable */
+var $first-string = "Hello World!";
+
+match / { <op-script-results> {
+/* This is a variable with template scope */
+var $second-string = "Goodbye World!";
+/* Output both variables to the console */
+<output> $first-string;
+<output> $second-string;
+ }
+}

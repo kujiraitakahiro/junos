@@ -1,0 +1,27 @@
+version 1.0;
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+import "../import/junos.xsl";
+
+var $arguments = {
+    <argument> {
+        <name> "software version check";
+        <description> "Junos software version checking";
+    }
+}
+param $version;
+match / {
+    <op-script-results> {
+        var $version-check = {
+            <get-software-information>;
+        }
+        var $result = jcs:invoke($version-check);
+        <output> {
+            expr "Checking software version ";
+            expr $result;
+            expr ". ";
+            expr "To verify, issue the \"show version\" command.";
+        }
+    }
+}
