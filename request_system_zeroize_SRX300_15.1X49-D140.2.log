@@ -1,0 +1,650 @@
+root@SRX300-B> request system zeroize
+warning: System will be rebooted and may not boot without configuration
+Erase all data, including configuration and log files? [yes,no] (no) yes
+
+warning: zeroizing re0
+Aug 30 17:08:42 init: pki-service (PID 1864) terminate signal 15 sent
+Aug 30 17:08:42 init: application-identification (PID 1866) terminate signal 15 sent
+Aug 30 17:08:42 init: application-security (PID 1867) terminate signal 15 sent
+Aug 30 17:08:42 init: idp-policy (PID 1868) terminate signal 15 sent
+Aug 30 17:08:42 init: security-intelligence (PID 1869) terminate signal 15 sent
+Aug 30 17:08:42 init: advanced-anti-malware (PID 1870) terminate signal 15 sent
+Aug 30 17:08:42 init: network-security-trace (PID 1871) terminate signal 15 sent
+Aug 30 17:08:42 init: security-log (PID 1872) terminate signal 15 sent
+Aug 30 17:08:42 init: utmd (PID 1873) terminate signal 15 sent
+Aug 30 17:08:42 init: ntpd-service (PID 1874) terminate signal 15 sent
+Aug 30 17:08:42 init: system-health-management (PID 1875) terminate signal 15 sent
+Aug 30 17:08:42 init: simple-mail-client-service (PID 1876) terminate signal 15 sent
+Aug 30 17:08:42 init: jnx-wmicd-service (PID 1877) terminate signal 15 sent
+Aug 30 17:08:42 init: webapi-service (PID 1878) terminate signal 15 sent
+Aug 30 17:08:42 init: local-log-management (PID 1879) terminate signal 15 sent
+Aug 30 17:08:42 init: license-service (PID 1880) terminate signal 15 sent
+Aug 30 17:08:42 init: service-deployment (PID 1881) terminate signal 15 sent
+Aug 30 17:08:42 init: 802.1x-secure-daemon (PID 1882) terminate signal 15 sentAug 30 17:08:46 init: jnx-wmicd-service (PID 1877) exited with status=0 Normal Exit
+Aug 30 17:08:46 init: bslockd (PID 1824) exited with status=0 Normal Exit
+Aug 30 17:08:46 init: watchdog (PID 1823) exited with status=0 Normal Exit
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWaiting (max 60 seconds) for system process `vnlru' to stop...done
+Waiting (max 60 seconds) for system process `vnlru_mem' to stop...done
+Waiting (max 60 seconds) for system process `bufdaemon' to stop...done
+Waiting (max 60 seconds) for system process `syncer' to stop...
+Syncing disks, vnodes remaining...0 0 0 0 done
+
+syncing disks... All buffers synced.
+Uptime: 7d1h23m59s
+Rebooting...
+cpu_reset: Stopping other CPUs
+
+
+SPI stage 1 bootloader (Build time: May  3 2016 - 23:48:30)
+early_board_init: Board type: SRX_300
+
+U-Boot 2013.07-JNPR-3.1 (Build time: May 03 2016 - 23:48:31)
+
+SRX_300 board revision major:1, minor:6, serial #: CV2416AF0458
+OCTEON CN7020-AAP pass 1.2, Core clock: 1200 MHz, IO clock: 600 MHz, DDR clock: 667 MHz (1334 Mhz DDR)
+Base DRAM address used by u-boot: 0x10fc00000, size: 0x400000
+DRAM: 4 GiB
+Clearing DRAM...... done
+Using default environment
+
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+Found valid SPI bootloader at offset: 0x90000, size: 1481840 bytes
+
+
+U-Boot 2013.07-JNPR-3.1 (Build time: May 03 2016 - 23:50:19)
+
+Using DRAM size from environment: 4096 MBytes
+checkboard siege
+SATA0: not available
+SATA1: not available
+SATA BIST STATUS = 0x0
+SRX_300 board revision major:1, minor:6, serial #: CV2416AF0458
+OCTEON CN7020-AAP pass 1.2, Core clock: 1200 MHz, IO clock: 600 MHz, DDR clock: 667 MHz (1334 Mhz DDR)
+Base DRAM address used by u-boot: 0x10f000000, size: 0x1000000
+DRAM: 4 GiB
+Clearing DRAM...... done
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+PCIe: Port 0 link active, 1 lanes, speed gen2
+PCIe: Link timeout on port 1, probably the slot is empty
+PCIe: Port 2 not in PCIe mode, skipping
+Net:   octeth0
+Interface 0 has 1 ports (SGMII)
+Type the command 'usb start' to scan for USB storage devices.
+
+Boot Media: eUSB usb
+Found TPM SLB9660 TT 1.2 by Infineon
+TPM initialized
+Hit any key to stop autoboot:  0
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+SF: 1048576 bytes @ 0x200000 Read: OK
+## Starting application at 0x8f0000a0 ...
+Consoles: U-Boot console
+Found compatible API, ver. 3.1
+USB1:
+Starting the controller
+USB XHCI 1.00
+scanning bus 1 for devices... 2 USB Device(s) found
+USB0:
+Starting the controller
+USB XHCI 1.00
+scanning bus 0 for devices... 1 USB Device(s) found
+       scanning usb for storage devices... 1 Storage Device(s) found
+
+FreeBSD/MIPS U-Boot bootstrap loader, Revision 2.8
+(slt-builder@svl-ssd-build-vm06.juniper.net, Tue Feb 10 00:32:30 PST 2015)
+Memory: 4096MB
+SF: Detected MX25L6405D with page size 256 Bytes, erase size 64 KiB, total 8 MiB
+[0]Booting from eUSB slice 1
+Loading /boot/defaults/loader.conf
+/kernel data=0xba1734+0x152c64 syms=[0x4+0xa0930+0x4+0xf0607]
+
+
+Hit [Enter] to boot immediately, or space bar for command prompt.
+Booting [/kernel]...
+Kernel entry at 0x801000c0 ...
+init regular console
+Primary ICache: Sets 16 Size 128 Asso 39
+Primary DCache: Sets 8 Size 128 Asso 32
+Secondary DCache: Sets 1024 Size 128 Asso 4
+CIU_FUSE 0x3/0x3
+GDB: debug ports: uart
+GDB: current port: uart
+KDB: debugger backends: ddb gdb
+KDB: current backend: ddb
+kld_map_v: 0x8ff80000, kld_map_p: 0x0
+Running in PARTITIONED TLB MODE
+Copyright (c) 1996-2018, Juniper Networks, Inc.
+All rights reserved.
+Copyright (c) 1992-2007 The FreeBSD Project.
+Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
+        The Regents of the University of California. All rights reserved.
+FreeBSD is a registered trademark of The FreeBSD Foundation.
+JUNOS 15.1X49-D140.2 #0: 2018-05-25 17:54:15 UTC
+    builder@monarth.juniper.net:/volume/build/junos/15.1/service/15.1X49-D140.2/obj/octeon/junos/bsd/kernels/JSRXNLE/kernel
+can't re-use a leaf (debug)!
+JUNOS 15.1X49-D140.2 #0: 2018-05-25 17:54:15 UTC
+    builder@monarth.juniper.net:/volume/build/junos/15.1/service/15.1X49-D140.2/obj/octeon/junos/bsd/kernels/JSRXNLE/kernel
+real memory  = 4294967296 (4194304K bytes)
+avail memory = 2621882368 (2500MB)
+FreeBSD/SMP: Multiprocessor System Detected: 2 CPUs
+Security policy loaded: JUNOS MAC/runasnonroot (mac_runasnonroot)
+Security policy loaded: Junos MAC/veriexec (mac_veriexec)
+Security policy loaded: JUNOS MAC/pcap (mac_pcap)
+MAC/veriexec fingerprint module loaded: SHA1
+MAC/veriexec fingerprint module loaded: SHA256
+netisr_init: !debug_mpsafenet, forcing maxthreads from 2 to 1
+cpu0 on motherboard
+: CAVIUM's OCTEON 70XX/71XX CPU Rev. 0.2 with no FPU implemented
+        L1 Cache: I size 78kb(128 line), D size 32kb(128 line), thirty two way.
+        L2 Cache: Size 512kb, 4 way
+obio0 on motherboard
+uart0: <Octeon-16550 channel 0> on obio0
+uart0: console (9600,n,8,1)
+twsi0 on obio0
+set clock 0x31
+xhci0: <Cavium Octeon 7xxx xHCI Host Driver> on obio0
+usb0: <USB bus for xHCI Controller> on xhci0
+usb0: USB revision 3.0
+uhub0: vendor 0x0000 XHCI root hub, class 9/0, rev 3.00/1.00, addr 1
+uhub0: 2 ports with 2 removable, self powered
+xhci1: <Cavium Octeon 7xxx xHCI Host Driver> on obio0
+usb1: <USB bus for xHCI Controller> on xhci1
+usb1: USB revision 3.0
+uhub1: vendor 0x0000 XHCI root hub, class 9/0, rev 3.00/1.00, addr 1
+uhub1: 2 ports with 2 removable, self powered
+cpld0 on obio0
+pcib0: <Cavium on-chip PCIe HOST bridge> on obio0
+Disabling Octeon big bar support
+pcib0: Initialized controller
+pci0: <PCI bus> on pcib0
+pci0: <network, ethernet> at device 0.0 (no driver attached)
+pci0: <network, ethernet> at device 0.1 (no driver attached)
+gblmem0 on obio0
+octpkt0: <Octeon RGMII> on obio0
+cfi0: <Macronix MX25L64 - 8MB> on obio0
+cfi1: <Macronix MX25L64 - 8MB> on obio0
+umass0: ATP Electronics ATP CG eUSB, rev 2.00/11.00, addr 2
+Timecounter "mips" frequency 1200000000 Hz quality 0
+Registered AMT tunnel Encap with UDP Tunnel!
+ Loading Redundant LT driver
+###PCB Group initialized for udppcbgroup
+###PCB Group initialized for tcppcbgroup
+da0 at umass-sim0 bus 0 target 0 lun 0
+da0: <ATP ATP CG eUSB 1100> Fixed Direct Access SCSI-4 device
+da0: 40.000MB/s transfers
+da0: 7672MB (15712256 512 byte sectors: 255H 63S/T 978C)
+Kernel thread "wkupdaemon" (pid 51) exited prematurely.
+Trying to mount root from ufs:/dev/da0s1a
+WARNING: / was not properly dismounted
+MFSINIT: Initialising MFSROOT
+WARNING: / was not properly dismounted
+Process-1 beginning MFSROOT initialization...
+Creating MFSROOT...
+/dev/md0: 20.0MB (40956 sectors) block size 16384, fragment size 2048
+        using 4 cylinder groups of 5.00MB, 320 blks, 640 inodes.
+super-block backups (for fsck -b #) at:
+ 32, 10272, 20512, 30752
+Populating MFSROOT...
+Creating symlinks...
+Setting up mounts...
+Continuing boot from MFSROOT...
+Attaching /cf/packages/junos via /dev/mdctl...
+Mounted junos package on /dev/md1...
+A
+Automatic reboot in progress...
+Verified jboot signed by PackageProductionEc_2018 method ECDSA256+SHA256
+Verified junos signed by PackageProductionEc_2018 method ECDSA256+SHA256
+Verified junos-15.1X49-D140.2-domestic signed by PackageProductionEc_2018 method ECDSA256+SHA256
+Checking integrity of BSD labels:
+  s1: Passed
+  s2: Passed
+  s3: Passed
+  s4: Passed
+** /dev/bo0s3e
+FILE SYSTEM CLEAN; SKIPPING CHECKS
+clean, 94696 free (24 frags, 11834 blocks, 0.0% fragmentation)
+** /dev/bo0s3f
+FILE SYSTEM CLEAN; SKIPPING CHECKS
+clean, 2586730 free (282 frags, 323306 blocks, 0.0% fragmentation)
+Checking integrity of licenses:
+  JUNOS847706.lic: No recovery data
+  JUNOS847707.lic: No recovery data
+  JUNOS847708.lic: No recovery data
+  JUNOS847709.lic: No recovery data
+  JUNOS847710.lic: No recovery data
+  JUNOS847711.lic: No recovery data
+  JUNOS890309.lic: No recovery data
+  JUNOS890310.lic: No recovery data
+  JUNOS890311.lic: No recovery data
+  JUNOS890312.lic: No recovery data
+  JUNOS921007.lic: No recovery data
+  JUNOS921008.lic: No recovery data
+  JUNOS921009.lic: No recovery data
+  JUNOS921010.lic: No recovery data
+ERROR: juniper.conf.gz or juniper.conf.gz.jc does not exist
+
+LPC bus driver
+lpcbus0 on cpld0
+tpm0: <Trusted Platform Module> on lpcbus0
+tpm: IFX SLB 9660 TT 1.2 rev 0x10
+hw.re.gres_sync_other: 0 -> 1
+Loading configuration ...
+mgd: error: Cannot open configuration file: /config/juniper.conf
+mgd: warning: activating factory configuration
+mgd: Running FIPS Self-tests
+veriexec: no fingerprint for file='/sbin/kats/cannot-exec' fsid=78 fileid=2474188 gen=1 uid=0 pid=963
+mgd: Time and ticks drifted too much, resetting synchronization...
+Generating RSA key /etc/ssh/ssh_host_key
+Generating public/private rsa1 key pair.
+Your identification has been saved in /etc/ssh/ssh_host_key.
+Your public key has been saved in /etc/ssh/ssh_host_key.pub.
+The key fingerprint is:
+SHA256:IlP4AsENJA2cAxO+bUhf34RQbpNoPVnXAlA9c810NKk root@
+The key's randomart image is:
++---[RSA1 2048]---+
+|O*=o ..oo+o.. +++|
+|.*o...= = .= o +o|
+| oo .+.X .  = .  |
+|. =.ooo =    E   |
+| o ++ o.S.       |
+|  .  + .         |
+|                 |
+|                 |
+|                 |
++----[SHA256]-----+
+Generating DSA key /etc/ssh/ssh_host_dsa_key
+Generating public/private dsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_dsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_dsa_key.pub.
+The key fingerprint is:
+SHA256:wl2WoPKYA+/oGPdv5V9CS3V7H3Q0wY909t1vQJBkdWg root@
+The key's randomart image is:
++---[DSA 1024]----+
+|        .  .++o++|
+|       . . o. E++|
+|  . . .   + .+.=*|
+|   o * . o . .+.*|
+|    = + S o   .oo|
+|   o . ..o .   .=|
+|. o .  o  o .  ..|
+| = .  . .  o     |
+|. . .o.  ..      |
++----[SHA256]-----+
+Generating RSA2 key /etc/ssh/ssh_host_rsa_key
+Generating public/private rsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_rsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_rsa_key.pub.
+The key fingerprint is:
+SHA256:i1yLmfrrVfAOsR5K45UD7jd/Ze/q06E/9Is3Il/aXi8 root@
+The key's randomart image is:
++---[RSA 2048]----+
+|                 |
+|                 |
+|      . o        |
+|     . . *       |
+|      + S o      |
+|     = @ O    oo |
+|      X B .  oo++|
+|     . o o ..oE+*|
+|    .o+.  ..o=BX*|
++----[SHA256]-----+
+Generating ECDSA key /etc/ssh/ssh_host_ecdsa_key
+Generating public/private ecdsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ecdsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_ecdsa_key.pub.
+The key fingerprint is:
+SHA256:i3EF+WdgdN5yVTvEyZziAPHwr7nC6k+8I50v2sIO0rI root@
+The key's randomart image is:
++---[ECDSA 256]---+
+|        .*+ . +.*|
+|        ..*+ o.B.|
+|         o.+= +o |
+|         .. ++  .|
+|      . S  o .   |
+|    .  +..  o    |
+|   o oo +o.o     |
+|    + .+oB. .    |
+|   E  o=*+=o     |
++----[SHA256]-----+
+Generating ED25519 key /etc/ssh/ssh_host_ed25519_key
+Generating public/private ed25519 key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ed25519_key.
+Your public key has been saved in /etc/ssh/ssh_host_ed25519_key.pub.
+The key fingerprint is:
+SHA256:DoRKhooo+cjZBuZN98kVDUgUuWALj8Y1sMDqVkqQNlk root@
+The key's randomart image is:
++--[ED25519 256]--+
+|.ooE. o++.       |
+|o*...* o  o      |
+|= =.B = .. .     |
+|== * + .  .      |
+|Oo=. .. S.       |
+|=** . ooo        |
+|o+.+   +.        |
+|  .              |
+|                 |
++----[SHA256]-----+
+mgd: commit complete
+Setting initial options: .
+Starting optional daemons:  usbd.
+Doing initial network setup:
+.
+Initial interface configuration:
+additional daemons: eventd.
+checking for core dump...
+savecore: Reboot reason(s): 0x200: normal shutdown
+savecore: Reboot reason(s): 0x200: normal shutdown
+savecore: no dumps found
+hw.re.gres_sync_other: 1 -> 0
+Additional routing options:kern.module_path: /boot//kernel;/boot/modules -> /boot/modules;/modules/ifpfe_drv;cryptosoft0: <software crypto> on motherboard
+IPsec: Initialized Security Association Processing.
+/modules;
+kad: can't load kats.ko: File exists
+.
+Doing additional network setup:.
+Starting final network daemons:.
+setting ldconfig path: /usr/lib /opt/lib
+starting standard daemons: cron.
+Initial rc.mips initialization:.
+Local package initialization:.
+starting local daemons:set cores for group access
+.
+kern.securelevel: -1 -> 1
+Creating JAIL MFS partition...
+JAIL MFS partition created
+Boot media /dev/da0 has dual root support
+** /dev/da0s2a
+FILE SYSTEM CLEAN; SKIPPING CHECKS
+clean, 171293 free (45 frags, 21406 blocks, 0.0% fragmentation)
+ chassis.ko loaded Loading JUNOS chassis module
+chassis_init_hw_chassis_startup_time: chassis startup time 0.000000
+Thu Aug 30 17:13:43 UTC 2018
+
+Amnesiac (ttyu0)
+
+login: root
+
+--- JUNOS 15.1X49-D140.2 built 2018-05-25 17:54:15 UTC
+root@% cli
+root> show configuration
+## Last commit: 2018-08-30 17:13:05 UTC by root
+version 15.1X49-D140.2;
+system {
+    autoinstallation {
+        traceoptions {
+            level verbose;
+            flag {
+                all;
+            }
+        }
+        interfaces {
+            ge-0/0/0 {
+                bootp;
+            }
+            ge-0/0/7 {
+                bootp;
+            }
+        }
+    }
+    name-server {
+        8.8.8.8;
+        8.8.4.4;
+    }
+    services {
+        ssh;
+        netconf {
+            ssh;
+        }
+        dhcp-local-server {
+            group jdhcp-group {
+                interface irb.0;
+            }
+        }
+        web-management {
+            https {
+                system-generated-certificate;
+            }
+        }
+    }
+    syslog {
+        archive size 100k files 3;
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    max-configurations-on-flash 5;
+    max-configuration-rollbacks 5;
+    license {
+        autoupdate {
+            url https://ae1.juniper.net/junos/key_retrieval;
+        }
+    }
+    phone-home {
+        server https://redirect.juniper.net;
+        rfc-complaint;
+    }
+    ## Warning: missing mandatory statement(s): 'root-authentication'
+}
+security {
+    log {
+        mode stream;
+        report;
+    }
+    screen {
+        ids-option untrust-screen {
+            icmp {
+                ping-death;
+            }
+            ip {
+                source-route-option;
+                tear-drop;
+            }
+            tcp {
+                syn-flood {
+                    alarm-threshold 1024;
+                    attack-threshold 200;
+                    source-threshold 1024;
+                    destination-threshold 2048;
+                    timeout 20;
+                }
+                land;
+            }
+        }
+    }
+    nat {
+        source {
+            rule-set trust-to-untrust {
+                from zone trust;
+                to zone untrust;
+                rule source-nat-rule {
+                    match {
+                        source-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone trust to-zone trust {
+            policy trust-to-trust {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone trust to-zone untrust {
+            policy trust-to-untrust {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone trust {
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                irb.0;
+            }
+        }
+        security-zone untrust {
+            screen untrust-screen;
+            interfaces {
+                ge-0/0/0.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            dhcp;
+                            tftp;
+                            https;
+                        }
+                    }
+                }
+                ge-0/0/7.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            dhcp;
+                            tftp;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet;
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members vlan-trust;
+                }
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members vlan-trust;
+                }
+            }
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members vlan-trust;
+                }
+            }
+        }
+    }
+    ge-0/0/4 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members vlan-trust;
+                }
+            }
+        }
+    }
+    ge-0/0/5 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members vlan-trust;
+                }
+            }
+        }
+    }
+    ge-0/0/6 {
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members vlan-trust;
+                }
+            }
+        }
+    }
+    ge-0/0/7 {
+        unit 0 {
+            family inet;
+        }
+    }
+    irb {
+        unit 0 {
+            family inet {
+                address 192.168.1.1/24;
+            }
+        }
+    }
+}
+protocols {
+    l2-learning {
+        global-mode switching;
+    }
+    rstp {
+        interface all;
+    }
+}
+access {
+    address-assignment {
+        pool junosDHCPPool {
+            family inet {
+                network 192.168.1.0/24;
+                range junosRange {
+                    low 192.168.1.2;
+                    high 192.168.1.254;
+                }
+                dhcp-attributes {
+                    router {
+                        192.168.1.1;
+                    }
+                    propagate-settings ge-0/0/0.0;
+                }
+            }
+        }
+    }
+}
+vlans {
+    vlan-trust {
+        vlan-id 3;
+        l3-interface irb.0;
+    }
+}
+
+root>
